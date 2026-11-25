@@ -69,6 +69,7 @@ section{padding:55px 7%}
 .heading{text-align:center;margin-bottom:35px}
 .heading h2{font-size:32px;margin-bottom:10px;letter-spacing:-0.5px}
 .heading p{color:#aaa}
+
 .tools{
 display:grid;grid-template-columns:repeat(2,1fr);
 gap:20px;max-width:850px;margin:auto;
@@ -89,32 +90,55 @@ border-radius:9px;cursor:pointer;font-weight:600;
 }
 .card button:hover{background:#8648e0}
 
-.demo-box{
-max-width:850px;margin:0 auto;
-background:#151222;border:1px solid #34264c;
-padding:28px;border-radius:20px;
+.studio-grid{
+display:grid;grid-template-columns:repeat(2,1fr);
+gap:22px;max-width:960px;margin:0 auto;
 }
-.demo-box textarea{
-width:100%;min-height:90px;
-padding:12px 14px;border-radius:12px;
-border:1px solid #442d6e;
-background:#0e0b19;color:white;
-font-family:inherit;font-size:14px;resize:vertical;
+.studio-box{
+background:#151222;border:1px solid #34264c;
+padding:26px;border-radius:20px;
+}
+.studio-box h3{font-size:20px;margin-bottom:8px}
+.studio-sub{font-size:13px;color:#aaa;margin-bottom:14px;line-height:1.5}
+.studio-box textarea,
+.studio-box input[type="text"],
+.studio-box select{
+width:100%;padding:11px 13px;border-radius:11px;
+border:1px solid #442d6e;background:#0e0b19;color:white;
+font-family:inherit;font-size:14px;margin-bottom:10px;
+}
+.studio-box textarea{min-height:85px;resize:vertical}
+.row-2{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;margin-bottom:10px}
+.row-2 input[type="color"]{
+width:54px;height:42px;border:1px solid #442d6e;border-radius:10px;
+background:#0e0b19;padding:3px;cursor:pointer;
 }
 .demo-actions{
-margin-top:14px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+margin-top:6px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;
 }
 .demo-btn{
-padding:11px 20px;border-radius:10px;border:0;
+padding:11px 18px;border-radius:10px;border:0;
 background:linear-gradient(90deg,#7538d7,#a35bff);
-color:white;font-weight:700;cursor:pointer;font-size:14px;
+color:white;font-weight:700;cursor:pointer;font-size:13px;
 }
 .demo-stop{
-padding:11px 16px;border-radius:10px;
+padding:11px 15px;border-radius:10px;
 border:1px solid #442d6e;background:#1b162d;
-color:#ddd;font-weight:600;cursor:pointer;font-size:14px;
+color:#ddd;font-weight:600;cursor:pointer;font-size:13px;
 }
-.demo-status{font-size:13px;color:#c8a7ff;margin-left:auto}
+.demo-status{font-size:12px;color:#c8a7ff;width:100%;margin-top:4px}
+
+.logo-preview{
+margin-top:14px;background:#0b0815;border:1px dashed #553787;
+border-radius:16px;padding:22px;text-align:center;
+}
+.logo-mark{
+width:64px;height:64px;border-radius:18px;margin:0 auto 12px;
+display:flex;align-items:center;justify-content:center;
+font-size:26px;font-weight:800;color:white;
+}
+.logo-brand-out{font-size:21px;font-weight:800;letter-spacing:-0.3px}
+.logo-tag-out{font-size:12px;color:#b8b0cb;margin-top:4px}
 
 .features{
 display:grid;grid-template-columns:repeat(3,1fr);
@@ -169,17 +193,6 @@ width:100%;padding:11px 13px;
 border-radius:10px;border:1px solid #442d6e;
 background:#0e0b19;color:white;font-size:13px;font-family:inherit;
 }
-.offer-box{
-margin-top:16px;background:#120d21;
-border:1px solid #6e42b8;border-radius:14px;padding:16px;
-}
-.offer-tag{
-font-size:11px;font-weight:800;color:#ffd27d;
-text-transform:uppercase;letter-spacing:0.6px;
-}
-.price-line{margin-top:8px;font-size:15px;color:#ddd}
-.old-price{text-decoration:line-through;color:#8f87a3;margin-right:8px}
-.new-price{font-size:26px;font-weight:800;color:#c79eff}
 .notify-msg{
 margin-top:10px;font-size:12px;color:#b8f2c8;min-height:18px;
 }
@@ -195,6 +208,9 @@ border:1px solid #3f2b63;border-radius:10px;
 background:transparent;color:#ccc;font-weight:600;cursor:pointer;font-size:13px;
 }
 
+@media(max-width:760px){
+.studio-grid{grid-template-columns:1fr}
+}
 @media(max-width:600px){
 header{padding:15px 5%}
 .logo{font-size:19px}
@@ -204,7 +220,6 @@ nav a{font-size:12px}
 .tools{grid-template-columns:1fr}
 .features{grid-template-columns:1fr}
 .hero{padding-top:70px}
-.demo-status{margin-left:0;width:100%}
 }
 </style>
 </head>
@@ -215,7 +230,7 @@ nav a{font-size:12px}
 <nav>
 <a href="#home">Home</a>
 <a href="#tools">AI Tools</a>
-<a href="#demo">Try Demo</a>
+<a href="#studio">Workspace</a>
 <a href="#about">About</a>
 <button type="button" class="nav-auth-btn" id="authNavBtn" onclick="openLoginModal()">Login</button>
 </nav>
@@ -225,46 +240,81 @@ nav a{font-size:12px}
 <div class="hero" id="home">
 <div class="tag">✦ YOUR AI CREATIVE STUDIO</div>
 <h1>Create Beyond <span>Limits.</span></h1>
-<p>Welcome to UPSECOND X1. Login to use our AI tools — first 3 uses are FREE, then ₹199 special offer (was ₹999).</p>
+<p>Welcome to UPSECOND X1. Login to use our working AI tools — your first 3 uses are completely FREE.</p>
 <div class="usage-pill" id="statusPill">Status: Not Logged In • First 3 uses FREE</div><br>
-<a href="#tools" class="btn">Explore AI Tools →</a>
+<a href="#studio" class="btn">Open AI Workspace →</a>
 </div>
 
 <section id="tools">
 <div class="heading">
 <h2>Our AI Tools</h2>
-<p>Powerful creative tools, all in one place.</p>
+<p>Login required • First 3 free uses included.</p>
 </div>
 
 <div class="tools">
 <div class="card">
 <div class="icon">🎙️</div>
 <h3>AI Voice Studio</h3>
-<p>Turn your text into voice with our AI voice generation tool. First 3 tries free, then ₹199 offer.</p>
-<button type="button" onclick="handleToolUse('voice', 'AI Voice Studio', 'AI Voice Studio session started! Enjoy your free creative run.')">Explore Voice →</button>
+<p>Turn your text into spoken voice with speed and pitch controls.</p>
+<button type="button" onclick="jumpToTool('voice')">Explore Voice →</button>
 </div>
 
 <div class="card">
 <div class="icon">🎨</div>
 <h3>AI Logo Maker</h3>
-<p>Bring your brand ideas to life with our AI logo creation tool. First 3 tries free, then ₹199 offer.</p>
-<button type="button" onclick="handleToolUse('logo', 'AI Logo Maker', 'AI Logo Maker session started! Enjoy your free creative run.')">Create Logo →</button>
+<p>Create a custom brand logo badge, name, tagline, and download it as SVG.</p>
+<button type="button" onclick="jumpToTool('logo')">Create Logo →</button>
 </div>
 </div>
 </section>
 
-<section id="demo">
+<section id="studio">
 <div class="heading">
-<h2>Quick Voice Preview</h2>
-<p>Login required • First 3 voice previews are FREE, after that ₹199 offer applies.</p>
+<h2>AI Creative Workspace</h2>
+<p>Each generation uses 1 of your 3 free credits (after login).</p>
 </div>
 
-<div class="demo-box">
-<textarea id="voiceText">Welcome to UPSECOND X1. First 3 tries are free, then special offer at ₹199.</textarea>
+<div class="studio-grid">
+<div class="studio-box" id="voiceBox">
+<h3>🎙️ AI Voice Studio</h3>
+<p class="studio-sub">Text likh kar voice preview suno aur speed/pitch adjust karo.</p>
+<textarea id="voiceText">Welcome to UPSECOND X1. Create beyond limits with AI.</textarea>
+<select id="voiceRate">
+<option value="1">Normal Speed (1.0x)</option>
+<option value="0.85">Slow & Calm (0.85x)</option>
+<option value="1.2">Fast & Energetic (1.2x)</option>
+</select>
 <div class="demo-actions">
-<button type="button" class="demo-btn" onclick="handleSpeakRequest()">Speak Text</button>
+<button type="button" class="demo-btn" onclick="runVoiceStudio()">Speak Text</button>
 <button type="button" class="demo-stop" onclick="stopSpeech()">Stop</button>
 <span class="demo-status" id="voiceStatus">Ready</span>
+</div>
+</div>
+
+<div class="studio-box" id="logoBox">
+<h3>🎨 AI Logo Maker</h3>
+<p class="studio-sub">Brand ka naam, tagline, aur color choose karke logo generate aur download karo.</p>
+<input type="text" id="brandName" value="UPSECOND X1" placeholder="Brand Name">
+<input type="text" id="brandTagline" value="AI Creative Studio" placeholder="Tagline">
+<div class="row-2">
+<select id="logoShape">
+<option value="rounded">Rounded Badge</option>
+<option value="circle">Circle Badge</option>
+<option value="square">Sharp Square</option>
+</select>
+<input type="color" id="brandColor" value="#7c3aed" title="Pick Logo Color">
+</div>
+<div class="demo-actions">
+<button type="button" class="demo-btn" onclick="runLogoMaker()">Generate Logo</button>
+<button type="button" class="demo-stop" onclick="downloadLogoSVG()">Download SVG</button>
+<span class="demo-status" id="logoStatus">Ready</span>
+</div>
+
+<div class="logo-preview">
+<div class="logo-mark" id="logoMark" style="background:#7c3aed">UX</div>
+<div class="logo-brand-out" id="logoBrandOut">UPSECOND X1</div>
+<div class="logo-tag-out" id="logoTagOut">AI Creative Studio</div>
+</div>
 </div>
 </div>
 </section>
@@ -299,7 +349,7 @@ nav a{font-size:12px}
 <div class="modal-box">
 <div class="modal-badge">LOGIN REQUIRED</div>
 <h3>Login to UPSECOND X1</h3>
-<p>Sign in to access AI tools. Your first <strong>3 uses are completely FREE</strong>.</p>
+<p>Sign in to use AI tools. Your first <strong>3 uses are FREE</strong>.</p>
 <div class="input-stack">
 <input type="text" id="loginName" placeholder="Enter your name">
 <input type="email" id="loginEmail" placeholder="Enter your email">
@@ -310,33 +360,14 @@ nav a{font-size:12px}
 </div>
 </div>
 
-<!-- Free Session / Info Modal -->
-<div class="modal-backdrop" id="sessionModal" onclick="closeOnBackdrop(event, 'sessionModal')">
+<!-- Free Limit Reached Modal (No Payment) -->
+<div class="modal-backdrop" id="limitModal" onclick="closeOnBackdrop(event, 'limitModal')">
 <div class="modal-box">
-<div class="modal-badge" id="sessionBadge">FREE USE</div>
-<h3 id="sessionTitle">Tool Ready</h3>
-<p id="sessionDesc">Description</p>
-<button type="button" class="primary-modal-btn" onclick="closeModal('sessionModal')">Got it</button>
-</div>
-</div>
-
-<!-- ₹199 Offer Modal (After 3 Free Uses) -->
-<div class="modal-backdrop" id="offerModal" onclick="closeOnBackdrop(event, 'offerModal')">
-<div class="modal-box">
-<div class="modal-badge">FREE LIMIT REACHED (3/3 USED)</div>
-<h3>Upgrade to Continue</h3>
-<p>Aapke 3 free uses poore ho gaye hain. Aage tools use karne ke liye hamara special offer lein:</p>
-<div class="offer-box">
-<div class="offer-tag">🔥 Limited Time Launch Offer</div>
-<div class="price-line">
-<span class="old-price">₹999</span>
-<span class="new-price">₹199</span> only
-</div>
-<p style="font-size:12px;color:#b8b0cb;margin-top:6px">Pehle yeh plan ₹999 ka tha, ab special offer mein sirf ₹199!</p>
-</div>
-<div class="notify-msg" id="offerMsg"></div>
-<button type="button" class="primary-modal-btn" onclick="claimDemoOffer()">Claim ₹199 Offer (Demo)</button>
-<button type="button" class="close-btn" onclick="closeModal('offerModal')">Close</button>
+<div class="modal-badge">FREE USES FINISHED (3/3)</div>
+<h3>3 Free Uses Complete</h3>
+<p>Aapke 3 free uses poore ho gaye hain. Naya session reset karna ho toh neeche Reset Free Uses dabao.</p>
+<button type="button" class="primary-modal-btn" onclick="resetFreeUses()">Reset 3 Free Uses</button>
+<button type="button" class="close-btn" onclick="closeModal('limitModal')">Close</button>
 </div>
 </div>
 
@@ -363,30 +394,21 @@ function setUsedCount(count) {
   localStorage.setItem('upsecond_free_used', String(count));
 }
 
-function hasOfferUnlocked() {
-  return localStorage.getItem('upsecond_offer_unlocked') === 'true';
-}
-
 function updateUI() {
   const user = getUser();
   const used = getUsedCount();
   const left = Math.max(0, FREE_LIMIT - used);
-  const unlocked = hasOfferUnlocked();
   const authBtn = document.getElementById('authNavBtn');
   const pill = document.getElementById('statusPill');
 
   if (user) {
     authBtn.textContent = user.name.split(' ')[0] + ' (Logout)';
     authBtn.onclick = logoutUser;
-    if (unlocked) {
-      pill.textContent = 'Logged in as ' + user.name + ' • ₹199 Offer Active (Unlimited Demo)';
-    } else {
-      pill.textContent = 'Logged in as ' + user.name + ' • ' + left + ' of ' + FREE_LIMIT + ' FREE uses left (Then ₹199)';
-    }
+    pill.textContent = 'Logged in as ' + user.name + ' • ' + left + ' of ' + FREE_LIMIT + ' FREE uses left';
   } else {
     authBtn.textContent = 'Login';
     authBtn.onclick = openLoginModal;
-    pill.textContent = 'Status: Not Logged In • First ' + FREE_LIMIT + ' uses FREE (Then ₹199, was ₹999)';
+    pill.textContent = 'Status: Not Logged In • First ' + FREE_LIMIT + ' uses FREE';
   }
 }
 
@@ -440,105 +462,60 @@ function closeOnBackdrop(event, id) {
   }
 }
 
-function canUseTool() {
-  if (!getUser()) {
-    return 'NEED_LOGIN';
-  }
-  if (hasOfferUnlocked()) {
-    return 'ALLOWED_PRO';
-  }
-  if (getUsedCount() < FREE_LIMIT) {
-    return 'ALLOWED_FREE';
-  }
-  return 'NEED_PAYMENT';
-}
-
-function handleToolUse(type, title, desc) {
-  const check = canUseTool();
-
-  if (check === 'NEED_LOGIN') {
-    pendingAction = () => handleToolUse(type, title, desc);
-    openLoginModal();
-    return;
-  }
-
-  if (check === 'NEED_PAYMENT') {
-    document.getElementById('offerMsg').textContent = '';
-    document.getElementById('offerModal').classList.add('open');
-    return;
-  }
-
-  if (check === 'ALLOWED_FREE') {
-    const nextUsed = getUsedCount() + 1;
-    setUsedCount(nextUsed);
-    const left = Math.max(0, FREE_LIMIT - nextUsed);
-    updateUI();
-    document.getElementById('sessionBadge').textContent = 'FREE USE ' + nextUsed + '/' + FREE_LIMIT;
-    document.getElementById('sessionTitle').textContent = title;
-    document.getElementById('sessionDesc').textContent = desc + ' (' + left + ' free uses remaining before ₹199 offer.)';
-    document.getElementById('sessionModal').classList.add('open');
-    return;
-  }
-
-  document.getElementById('sessionBadge').textContent = '₹199 OFFER ACTIVE';
-  document.getElementById('sessionTitle').textContent = title;
-  document.getElementById('sessionDesc').textContent = desc;
-  document.getElementById('sessionModal').classList.add('open');
-}
-
-function handleSpeakRequest() {
-  const check = canUseTool();
-
-  if (check === 'NEED_LOGIN') {
-    pendingAction = handleSpeakRequest;
-    openLoginModal();
-    return;
-  }
-
-  if (check === 'NEED_PAYMENT') {
-    document.getElementById('offerMsg').textContent = '';
-    document.getElementById('offerModal').classList.add('open');
-    return;
-  }
-
-  if (check === 'ALLOWED_FREE') {
-    const nextUsed = getUsedCount() + 1;
-    setUsedCount(nextUsed);
-    updateUI();
-  }
-
-  speakText();
-}
-
-function claimDemoOffer() {
-  localStorage.setItem('upsecond_offer_unlocked', 'true');
+function resetFreeUses() {
+  setUsedCount(0);
   updateUI();
-  const msg = document.getElementById('offerMsg');
-  msg.style.color = '#b8f2c8';
-  msg.textContent = '₹199 Offer activated in demo mode! Ab tools use kar sakta hai.';
-  setTimeout(() => {
-    closeModal('offerModal');
-  }, 1100);
+  closeModal('limitModal');
 }
 
-function speakText() {
+function consumeFreeCredit(actionFn) {
+  if (!getUser()) {
+    pendingAction = actionFn;
+    openLoginModal();
+    return false;
+  }
+  const used = getUsedCount();
+  if (used >= FREE_LIMIT) {
+    document.getElementById('limitModal').classList.add('open');
+    return false;
+  }
+  setUsedCount(used + 1);
+  updateUI();
+  return true;
+}
+
+function jumpToTool(tool) {
+  const targetId = tool === 'voice' ? 'voiceBox' : 'logoBox';
+  const el = document.getElementById(targetId);
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+
+function runVoiceStudio() {
   const status = document.getElementById('voiceStatus');
   const text = document.getElementById('voiceText').value.trim();
+  const rate = Number(document.getElementById('voiceRate').value || '1');
 
-  if (!('speechSynthesis' in window)) {
-    status.textContent = 'Voice preview not supported on this browser.';
+  if (!text) {
+    status.textContent = 'Please enter text first.';
     return;
   }
 
-  if (!text) {
-    status.textContent = 'Please type some text first.';
+  const allowed = consumeFreeCredit(() => runVoiceStudio());
+  if (!allowed) return;
+
+  if (!('speechSynthesis' in window)) {
+    status.textContent = 'Voice synthesis not supported on this browser.';
     return;
   }
 
   window.speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
-  utterance.onstart = () => { status.textContent = 'Speaking...'; };
-  utterance.onend = () => { status.textContent = 'Ready'; };
+  utterance.rate = rate;
+  const left = Math.max(0, FREE_LIMIT - getUsedCount());
+  utterance.onstart = () => { status.textContent = 'Speaking... (' + left + ' free left)'; };
+  utterance.onend = () => { status.textContent = 'Done (' + left + ' free left)'; };
   utterance.onerror = () => { status.textContent = 'Could not play voice.'; };
   window.speechSynthesis.speak(utterance);
 }
@@ -548,6 +525,68 @@ function stopSpeech() {
     window.speechSynthesis.cancel();
   }
   document.getElementById('voiceStatus').textContent = 'Stopped';
+}
+
+function getInitials(name) {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return 'UX';
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+  return (parts[0][0] + parts[1][0]).toUpperCase();
+}
+
+function runLogoMaker() {
+  const brand = document.getElementById('brandName').value.trim() || 'UPSECOND X1';
+  const tagline = document.getElementById('brandTagline').value.trim() || 'AI Creative Studio';
+  const color = document.getElementById('brandColor').value || '#7c3aed';
+  const shape = document.getElementById('logoShape').value || 'rounded';
+  const status = document.getElementById('logoStatus');
+
+  const allowed = consumeFreeCredit(() => runLogoMaker());
+  if (!allowed) return;
+
+  const mark = document.getElementById('logoMark');
+  mark.textContent = getInitials(brand);
+  mark.style.background = color;
+  mark.style.borderRadius = shape === 'circle' ? '999px' : (shape === 'square' ? '8px' : '18px');
+
+  document.getElementById('logoBrandOut').textContent = brand;
+  document.getElementById('logoTagOut').textContent = tagline;
+
+  const left = Math.max(0, FREE_LIMIT - getUsedCount());
+  status.textContent = 'Logo generated! (' + left + ' free left)';
+}
+
+function escapeXml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function downloadLogoSVG() {
+  const brand = document.getElementById('logoBrandOut').textContent.trim() || 'UPSECOND X1';
+  const tagline = document.getElementById('logoTagOut').textContent.trim() || 'AI Creative Studio';
+  const color = document.getElementById('brandColor').value || '#7c3aed';
+  const initials = getInitials(brand);
+
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="500" height="220" viewBox="0 0 500 220">
+  <rect width="500" height="220" rx="24" fill="#120e1f"/>
+  <rect x="35" y="45" width="130" height="130" rx="28" fill="${escapeXml(color)}"/>
+  <text x="100" y="126" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="44" font-weight="bold">${escapeXml(initials)}</text>
+  <text x="190" y="102" fill="#ffffff" font-family="Arial, sans-serif" font-size="30" font-weight="bold">${escapeXml(brand)}</text>
+  <text x="190" y="138" fill="#c7bddc" font-family="Arial, sans-serif" font-size="16">${escapeXml(tagline)}</text>
+</svg>`;
+
+  const blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = brand.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '-logo.svg';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 }
 
 updateUI();
