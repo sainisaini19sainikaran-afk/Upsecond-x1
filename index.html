@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UPSECOND X1 | AI Voice Studio</title>
-<meta name="description" content="UPSECOND X1 - Professional AI Voice Studio with multi-country Male & Female voices.">
+<meta name="description" content="UPSECOND X1 - AI Voice Studio with Sign In, Hindi & English Male/Female voices.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -20,6 +20,7 @@ nav a{color:#ddd;text-decoration:none;font-size:13px;font-weight:600}
 nav a:hover{color:#c8a7ff}
 .nav-auth-btn{padding:8px 14px;border-radius:9px;border:1px solid #6b43a8;background:#1a142d;color:#e5d4ff;font-size:12px;font-weight:700;cursor:pointer}
 .nav-auth-btn:hover{background:#281e44}
+
 .hero{text-align:center;padding:82px 20px 58px;background:radial-gradient(ellipse at top,#302052 0%,#090812 65%)}
 .tag{color:#c8a7ff;border:1px solid #7049a8;padding:9px 16px;border-radius:30px;display:inline-block;font-size:12px;font-weight:600}
 h1{font-size:clamp(38px,7vw,66px);margin:22px 0 14px;letter-spacing:-1.5px;line-height:1.1}
@@ -27,27 +28,41 @@ h1 span{background:linear-gradient(90deg,#a66cff,#e0baff);-webkit-background-cli
 .hero p{color:#bdb6ca;max-width:560px;margin:auto;line-height:1.7}
 .usage-pill{margin-top:18px;display:inline-block;background:#151124;border:1px solid #3c295c;padding:8px 15px;border-radius:10px;font-size:12px;color:#d6beff}
 .btn{display:inline-block;margin-top:22px;padding:14px 27px;border-radius:12px;background:linear-gradient(90deg,#7538d7,#a35bff);color:white;text-decoration:none;font-weight:700;border:0;cursor:pointer}
+
 section{padding:52px 7%}
 .heading{text-align:center;margin-bottom:30px}
 .heading h2{font-size:32px;margin-bottom:10px;letter-spacing:-0.5px}
 .heading p{color:#aaa}
+
 .studio-wrap{max-width:880px;margin:0 auto;background:#151222;border:1px solid #34264c;padding:26px;border-radius:22px}
+.studio-top-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.power-btn{padding:8px 14px;border-radius:999px;border:1px solid #5c3b96;background:#24193b;color:#e6d6ff;font-size:12px;font-weight:700;cursor:pointer}
+.power-btn.off{border-color:#5c2938;background:#2b121b;color:#ffb4c4}
+.wave-line{flex:1;min-width:140px;height:4px;border-radius:999px;background:#281e3d;position:relative;overflow:hidden}
+.wave-line::after{content:'';position:absolute;inset:0;width:35%;background:linear-gradient(90deg,#7c3aed,#e0baff,#7c3aed);border-radius:999px;transform:translateX(-120%)}
+.studio-wrap.speaking .wave-line::after{animation:lineSweep 1.1s linear infinite}
+@keyframes lineSweep{0%{transform:translateX(-120%)}100%{transform:translateX(380%)}}
+
 .controls-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:12px}
 .field-label{display:block;font-size:12px;color:#c9bfe0;margin-bottom:5px;font-weight:600}
 .studio-wrap select,.studio-wrap textarea{width:100%;padding:11px 13px;border-radius:11px;border:1px solid #442d6e;background:#0e0b19;color:white;font-family:inherit;font-size:13px}
 .voice-select-row{margin-bottom:12px}
+
 .presets-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:center}
 .preset-chip{padding:6px 11px;border-radius:20px;border:1px solid #4b3178;background:#1a142d;color:#dfd0ff;font-size:11px;font-weight:600;cursor:pointer}
 .preset-chip:hover{background:#291e47;border-color:#9663f0}
+
 .sliders-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:12px 0 14px;background:#100c1b;border:1px solid #2b1f45;padding:14px;border-radius:14px}
 .slider-item label{display:flex;justify-content:space-between;font-size:12px;color:#d6c9f2;margin-bottom:6px;font-weight:600}
 .slider-item input[type="range"]{width:100%;accent-color:#9b5cff;cursor:pointer}
+
 .studio-wrap textarea{min-height:110px;resize:vertical;font-size:14px;line-height:1.5}
 .meta-bar{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#a49bb8;margin-top:6px}
 .demo-actions{margin-top:14px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .demo-btn{padding:12px 22px;border-radius:11px;border:0;background:linear-gradient(90deg,#7538d7,#a35bff);color:white;font-weight:700;cursor:pointer;font-size:14px}
 .demo-stop{padding:12px 17px;border-radius:11px;border:1px solid #442d6e;background:#1b162d;color:#ddd;font-weight:600;cursor:pointer;font-size:14px}
-.demo-status{font-size:13px;color:#c8a7ff;margin-left:auto}
+.demo-status{font-size:13px;color:#c8a7ff}
+
 .history-box{margin-top:20px;padding-top:18px;border-top:1px solid #2b1f45}
 .history-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:10px}
 .history-head h4{font-size:14px;color:#e6dcff}
@@ -57,12 +72,15 @@ section{padding:52px 7%}
 .history-text{color:#ded7f0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
 .history-play{padding:6px 11px;border-radius:8px;border:0;background:#6e36c4;color:white;font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap}
 .history-empty{font-size:12px;color:#8f86a3}
+
 .features{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;text-align:center;max-width:960px;margin:0 auto}
 .feature{background:#151222;padding:22px;border-radius:15px;border:1px solid #302442}
 .feature h3{margin:10px 0}
 .feature p{font-size:13px;color:#aaa}
+
 footer{text-align:center;padding:30px 15px;border-top:1px solid #302442;color:#aaa;font-size:13px;line-height:2}
 footer strong{color:#bd91ff}
+
 .modal-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);justify-content:center;align-items:center;padding:20px;z-index:50}
 .modal-backdrop.open{display:flex}
 .modal-box{width:100%;max-width:420px;background:#171327;border:1px solid #57368c;border-radius:20px;padding:26px;text-align:center}
@@ -74,11 +92,13 @@ footer strong{color:#bd91ff}
 .notify-msg{margin-top:10px;font-size:12px;color:#b8f2c8;min-height:18px}
 .primary-modal-btn{margin-top:16px;width:100%;padding:12px 20px;border:0;border-radius:10px;background:linear-gradient(90deg,#7538d7,#a35bff);color:white;font-weight:700;cursor:pointer;font-size:14px}
 .close-btn{margin-top:10px;padding:9px 18px;border:1px solid #3f2b63;border-radius:10px;background:transparent;color:#ccc;font-weight:600;cursor:pointer;font-size:13px}
+
 @media(max-width:760px){.controls-grid{grid-template-columns:1fr}.sliders-grid{grid-template-columns:1fr}}
-@media(max-width:600px){header{padding:15px 5%}.logo{font-size:19px}nav{gap:9px}nav a{font-size:12px}.nav-auth-btn{padding:6px 10px;font-size:11px}.features{grid-template-columns:1fr}.hero{padding-top:70px}.demo-status{margin-left:0;width:100%}}
+@media(max-width:600px){header{padding:15px 5%}.logo{font-size:19px}nav{gap:9px}nav a{font-size:12px}.nav-auth-btn{padding:6px 10px;font-size:11px}.features{grid-template-columns:1fr}.hero{padding-top:70px}}
 </style>
 </head>
 <body>
+
 <header>
 <div class="logo">UPSECOND <span>X1</span></div>
 <nav>
@@ -88,79 +108,106 @@ footer strong{color:#bd91ff}
 <button type="button" class="nav-auth-btn" id="authNavBtn" onclick="openLoginModal()">Sign In</button>
 </nav>
 </header>
+
 <main>
 <div class="hero" id="home">
 <div class="tag">✦ PRO AI VOICE STUDIO</div>
 <h1>Create Beyond <span>Limits.</span></h1>
-<p>Sign in with your account to generate voices across countries and languages with Male &amp; Female voice options.</p>
+<p>Sign in with your account to generate natural Hindi &amp; English voices with Male &amp; Female options.</p>
 <div class="usage-pill" id="statusPill">Account: Not Signed In • Sign in to use Voice Studio</div><br>
 <a href="#studio" class="btn">Open Voice Studio →</a>
 </div>
+
 <section id="studio">
 <div class="heading">
 <h2>AI Voice Studio</h2>
-<p>Country / Language aur Male / Female voice choose karke text ko speech mein badlo.</p>
+<p>Hindi ya English aur Male ya Female voice choose karke natural command ke saath suno.</p>
 </div>
-<div class="studio-wrap">
+
+<div class="studio-wrap" id="studioCard">
+<div class="studio-top-bar">
+<button type="button" class="power-btn" id="studioPowerBtn" onclick="toggleStudioPower()">Studio: ON</button>
+<div class="wave-line" id="voiceWaveLine"></div>
+<span class="demo-status" id="voiceStatus">Ready</span>
+</div>
+
 <div class="controls-grid">
 <div>
-<label class="field-label" for="countryFilter">Country / Region</label>
-<select id="countryFilter" onchange="populateVoices()">
-<option value="ALL">All Countries / Languages</option>
-<option value="IN">India (en-IN / hi-IN)</option>
-<option value="US">United States (en-US)</option>
-<option value="GB">United Kingdom (en-GB)</option>
-<option value="AU">Australia (en-AU)</option>
-<option value="CA">Canada (en-CA)</option>
-<option value="DE">Germany (de-DE)</option>
-<option value="FR">France (fr-FR)</option>
-<option value="ES">Spain / Latin America (es)</option>
-<option value="JP">Japan (ja-JP)</option>
-<option value="KR">South Korea (ko-KR)</option>
-<option value="AE">Arabic / Middle East (ar)</option>
+<label class="field-label" for="langFilter">Language</label>
+<select id="langFilter" onchange="populateVoices()">
+<option value="ALL">Hindi &amp; English (All)</option>
+<option value="HI">Hindi (हिन्दी)</option>
+<option value="EN">English</option>
 </select>
 </div>
+
 <div>
-<label class="field-label" for="genderFilter">Voice Gender Style</label>
-<select id="genderFilter" onchange="populateVoices()">
-<option value="ALL">All (Male &amp; Female)</option>
-<option value="FEMALE">Female Voices</option>
-<option value="MALE">Male Voices</option>
+<label class="field-label" for="genderFilter">Voice Gender</label>
+<select id="genderFilter" onchange="applyCommandPreset()">
+<option value="FEMALE">Female Voice</option>
+<option value="MALE">Male Voice</option>
 </select>
 </div>
 </div>
+
 <div class="voice-select-row">
 <label class="field-label" for="voiceSelect">Select Voice</label>
 <select id="voiceSelect"></select>
 </div>
+
+<div class="controls-grid">
+<div>
+<label class="field-label" for="styleCommand">Delivery Command</label>
+<select id="styleCommand" onchange="applyCommandPreset()">
+<option value="natural">Natural Human</option>
+<option value="expressive">Expressive / Reel</option>
+<option value="calm">Calm &amp; Clear</option>
+</select>
+</div>
+
+<div>
+<label class="field-label" for="quickCmd">Quick Command</label>
+<select id="quickCmd" onchange="applyQuickCommand()">
+<option value="">-- Choose Command --</option>
+<option value="hi_greet">Hindi: नमस्ते! UPSECOND X1 में आपका स्वागत है।</option>
+<option value="en_greet">English: Hello! Welcome to UPSECOND X1 Voice Studio.</option>
+<option value="hi_reel">Hindi Hook: रुकिए! यह बात ध्यान से सुनिए।</option>
+<option value="en_reel">English Hook: Listen closely—this is super helpful.</option>
+</select>
+</div>
+</div>
+
 <div class="presets-row">
-<span class="field-label" style="margin:0 4px 0 0">Quick Templates:</span>
-<button type="button" class="preset-chip" onclick="useTemplate('reel')">Short Reel Hook</button>
+<span class="field-label" style="margin:0 4px 0 0">Templates:</span>
+<button type="button" class="preset-chip" onclick="useTemplate('reel')">Short Reel</button>
 <button type="button" class="preset-chip" onclick="useTemplate('ad')">Brand Promo</button>
 <button type="button" class="preset-chip" onclick="useTemplate('story')">Story Intro</button>
 <button type="button" class="preset-chip" onclick="useTemplate('hindi')">Hindi Welcome</button>
 </div>
+
 <div class="sliders-grid">
 <div class="slider-item">
-<label for="rateRange"><span>Speed (Rate)</span><span id="rateVal">1.00x</span></label>
-<input type="range" id="rateRange" min="0.6" max="1.6" step="0.05" value="1" oninput="updateSliders()">
+<label for="rateRange"><span>Speed</span><span id="rateVal">0.98x</span></label>
+<input type="range" id="rateRange" min="0.7" max="1.35" step="0.05" value="0.98" oninput="updateSliders()">
 </div>
 <div class="slider-item">
-<label for="pitchRange"><span>Pitch</span><span id="pitchVal">1.00</span></label>
-<input type="range" id="pitchRange" min="0.6" max="1.4" step="0.05" value="1" oninput="updateSliders()">
+<label for="pitchRange"><span>Pitch</span><span id="pitchVal">1.12</span></label>
+<input type="range" id="pitchRange" min="0.75" max="1.3" step="0.05" value="1.12" oninput="updateSliders()">
 </div>
 </div>
+
 <label class="field-label" for="voiceText">Your Script / Text</label>
-<textarea id="voiceText" oninput="updateCounts()">Welcome to UPSECOND X1 AI Voice Studio. Type any text and select a country and voice to speak.</textarea>
+<textarea id="voiceText" oninput="updateCounts()">Hello! Aaj hum UPSECOND X1 par Hindi aur English mein natural voice test kar rahe hain.</textarea>
 <div class="meta-bar">
 <span id="wordCharCount">0 words • 0 characters</span>
-<span>Browser TTS Studio</span>
+<span>Hindi &amp; English Only</span>
 </div>
+
 <div class="demo-actions">
-<button type="button" class="demo-btn" onclick="handleSpeakRequest()">Generate &amp; Speak</button>
+<button type="button" class="demo-btn" onclick="handleSpeakRequest()">Speak Now</button>
 <button type="button" class="demo-stop" onclick="stopSpeech()">Stop</button>
-<span class="demo-status" id="voiceStatus">Ready</span>
 </div>
+
 <div class="history-box">
 <div class="history-head">
 <h4>Recent Voice History</h4>
@@ -170,6 +217,7 @@ footer strong{color:#bd91ff}
 </div>
 </div>
 </section>
+
 <section id="about">
 <div class="heading">
 <h2>Why UPSECOND X1 Voice?</h2>
@@ -177,23 +225,24 @@ footer strong{color:#bd91ff}
 </div>
 <div class="features">
 <div class="feature">
-<div class="icon">🌍</div>
-<h3>Multi-Country</h3>
-<p>Filter voices by country and language.</p>
+<div class="icon">🗣️</div>
+<h3>Hindi &amp; English</h3>
+<p>Focused support for Hindi and English voices.</p>
 </div>
 <div class="feature">
 <div class="icon">🎙️</div>
 <h3>Male &amp; Female</h3>
-<p>Pick male or female voices with pitch &amp; speed control.</p>
+<p>Switch between male and female commands smoothly.</p>
 </div>
 <div class="feature">
 <div class="icon">🔐</div>
 <h3>Account Sign-In</h3>
-<p>Simple login/sign-in flow with saved recent scripts.</p>
+<p>Simple sign-in with saved recent scripts.</p>
 </div>
 </div>
 </section>
 </main>
+
 <div class="modal-backdrop" id="loginModal" onclick="closeOnBackdrop(event, 'loginModal')">
 <div class="modal-box">
 <div class="modal-badge">SIGN IN / LOGIN</div>
@@ -208,44 +257,87 @@ footer strong{color:#bd91ff}
 <button type="button" class="close-btn" onclick="closeModal('loginModal')">Cancel</button>
 </div>
 </div>
+
 <footer>
 <strong>UPSECOND X1</strong><br>
 Create Beyond Limits.<br>
 © 2026 UPSECOND X1. All Rights Reserved.
 </footer>
+
 <script>
 let allVoices = [];
 let pendingSpeak = false;
+let studioEnabled = true;
+
 const TEMPLATES = {
   reel: 'Wait till the end! Here is one smart tip to level up your daily routine in 10 seconds.',
   ad: 'Upgrade your workflow with UPSECOND X1. Fast, simple, and built for creative minds.',
   story: 'It started on a quiet evening, with a single idea that refused to stay ordinary.',
   hindi: 'नमस्ते! UPSECOND X1 वॉइस स्टूडियो में आपका स्वागत है। अपनी स्क्रिप्ट लिखें और सुनें।'
 };
-const FEMALE_HINTS = ['female','woman','girl','zira','hazel','susan','samantha','victoria','karen','moira','tessa','fiona','veena','lekha','aditi','heera','priya','aria','jenny','ava','emma','olivia','claire','amelie','marlene','vicki','kyoko','haruka','yuna','seoyeon','salma','hoda'];
-const MALE_HINTS = ['male','man','boy','david','mark','george','daniel','arthur','rishi','prabhat','ravi','guy','christopher','ryan','aaron','alex','fred','thomas','oliver','henrik','otoya','ichiro','minho','tariq'];
+
+const FEMALE_HINTS = ['female','woman','girl','zira','hazel','susan','samantha','victoria','karen','moira','tessa','fiona','veena','lekha','aditi','heera','priya','aria','jenny','ava','emma','olivia','swara','neerja'];
+const MALE_HINTS = ['male','man','boy','david','mark','george','daniel','arthur','rishi','prabhat','ravi','guy','christopher','ryan','aaron','alex','madhur','kabir'];
+
 function getUser(){const raw=localStorage.getItem('upsecond_user');return raw?JSON.parse(raw):null;}
 function getHistory(){const raw=localStorage.getItem('upsecond_voice_history');return raw?JSON.parse(raw):[];}
-function saveToHistory(text){const list=getHistory().filter(item=>item.text!==text);list.unshift({text});localStorage.setItem('upsecond_voice_history',JSON.stringify(list.slice(0,5)));renderHistory();}
-function clearHistory(){localStorage.removeItem('upsecond_voice_history');renderHistory();}
+
+function saveToHistory(text){
+  const list=getHistory().filter(item=>item.text!==text);
+  list.unshift({text});
+  localStorage.setItem('upsecond_voice_history',JSON.stringify(list.slice(0,5)));
+  renderHistory();
+}
+
+function clearHistory(){
+  localStorage.removeItem('upsecond_voice_history');
+  renderHistory();
+}
+
 function renderHistory(){
   const container=document.getElementById('historyList');
   const list=getHistory();
-  if(!list.length){container.innerHTML='<div class="history-empty">No recent spoken scripts yet.</div>';return;}
+  if(!list.length){
+    container.innerHTML='<div class="history-empty">No recent spoken scripts yet.</div>';
+    return;
+  }
   container.innerHTML='';
   list.forEach((item)=>{
-    const row=document.createElement('div');row.className='history-item';
-    const span=document.createElement('span');span.className='history-text';span.textContent=item.text;
-    const btn=document.createElement('button');btn.type='button';btn.className='history-play';btn.textContent='Play';
-    btn.onclick=()=>{document.getElementById('voiceText').value=item.text;updateCounts();handleSpeakRequest();};
-    row.appendChild(span);row.appendChild(btn);container.appendChild(row);
+    const row=document.createElement('div');
+    row.className='history-item';
+    const span=document.createElement('span');
+    span.className='history-text';
+    span.textContent=item.text;
+    const btn=document.createElement('button');
+    btn.type='button';
+    btn.className='history-play';
+    btn.textContent='Play';
+    btn.onclick=()=>{
+      document.getElementById('voiceText').value=item.text;
+      updateCounts();
+      handleSpeakRequest();
+    };
+    row.appendChild(span);
+    row.appendChild(btn);
+    container.appendChild(row);
   });
 }
+
 function updateUI(){
-  const user=getUser();const authBtn=document.getElementById('authNavBtn');const pill=document.getElementById('statusPill');
-  if(user){authBtn.textContent=user.name.split(' ')[0]+' (Sign Out)';authBtn.onclick=signOutUser;pill.textContent='Signed in as '+user.name+' ('+user.email+')';}
-  else{authBtn.textContent='Sign In';authBtn.onclick=openLoginModal;pill.textContent='Account: Not Signed In • Click "Generate & Speak" or "Sign In"';}
+  const user=getUser();
+  const authBtn=document.getElementById('authNavBtn');
+  const pill=document.getElementById('statusPill');
+  if(user){
+    authBtn.textContent=user.name.split(' ')[0]+' (Sign Out)';
+    authBtn.onclick=signOutUser;
+    pill.textContent='Signed in as '+user.name+' ('+user.email+')';
+  }else{
+    authBtn.textContent='Sign In';
+    authBtn.onclick=openLoginModal;
+    pill.textContent='Account: Not Signed In • Click "Speak Now" or "Sign In"';
+  }
 }
+
 function openLoginModal(){
   const user=getUser();
   document.getElementById('loginName').value=user?user.name:'';
@@ -253,6 +345,7 @@ function openLoginModal(){
   document.getElementById('loginMsg').textContent='';
   document.getElementById('loginModal').classList.add('open');
 }
+
 function submitLogin(){
   const name=document.getElementById('loginName').value.trim();
   const email=document.getElementById('loginEmail').value.trim();
@@ -260,87 +353,247 @@ function submitLogin(){
   if(!name){msg.style.color='#ffb3b3';msg.textContent='Please enter your name.';return;}
   if(!email||!email.includes('@')||!email.includes('.')){msg.style.color='#ffb3b3';msg.textContent='Please enter a valid email.';return;}
   localStorage.setItem('upsecond_user',JSON.stringify({name,email}));
-  updateUI();closeModal('loginModal');
+  updateUI();
+  closeModal('loginModal');
   if(pendingSpeak){pendingSpeak=false;speakText();}
 }
+
 function signOutUser(){localStorage.removeItem('upsecond_user');updateUI();}
 function closeModal(id){document.getElementById(id).classList.remove('open');}
 function closeOnBackdrop(event,id){if(event.target.id===id)closeModal(id);}
+
+function toggleStudioPower(){
+  studioEnabled=!studioEnabled;
+  const btn=document.getElementById('studioPowerBtn');
+  const status=document.getElementById('voiceStatus');
+  if(!studioEnabled){
+    stopSpeech();
+    if(btn){btn.textContent='Studio: OFF';btn.classList.add('off');}
+    if(status)status.textContent='Studio OFF';
+  }else{
+    if(btn){btn.textContent='Studio: ON';btn.classList.remove('off');}
+    if(status)status.textContent='Ready';
+  }
+}
+
+function setSpeakingLine(active){
+  const wrap=document.getElementById('studioCard');
+  if(!wrap)return;
+  if(active)wrap.classList.add('speaking');
+  else wrap.classList.remove('speaking');
+}
+
+function isHindiOrEnglish(voice){
+  const lang=(voice.lang||'').toLowerCase();
+  return lang.startsWith('hi')||lang.startsWith('en');
+}
+
 function detectGender(voice){
   const label=((voice.name||'')+' '+(voice.voiceURI||'')).toLowerCase();
-  if(FEMALE_HINTS.some(h=>label.includes(h)))return 'FEMALE';
-  if(MALE_HINTS.some(h=>label.includes(h)))return 'MALE';
+  if(FEMALE_HINTS.some(k=>label.includes(k)))return 'FEMALE';
+  if(MALE_HINTS.some(k=>label.includes(k)))return 'MALE';
   return 'UNKNOWN';
 }
-function matchesCountry(voice,code){
-  if(code==='ALL')return true;
-  const lang=(voice.lang||'').toUpperCase();
-  if(code==='IN')return lang.includes('-IN')||lang.startsWith('HI')||lang.startsWith('TA')||lang.startsWith('TE')||lang.startsWith('BN')||lang.startsWith('MR');
-  if(code==='ES')return lang.startsWith('ES');
-  if(code==='AE')return lang.startsWith('AR');
-  return lang.includes('-'+code)||lang.endsWith(code);
+
+function loadVoicesList(){
+  if(!('speechSynthesis' in window))return;
+  try{allVoices=window.speechSynthesis.getVoices()||[];}catch(e){allVoices=[];}
+  populateVoices();
 }
-function loadVoicesList(){if(!('speechSynthesis' in window))return;allVoices=window.speechSynthesis.getVoices()||[];populateVoices();}
+
 function populateVoices(){
   const select=document.getElementById('voiceSelect');
-  const countryCode=document.getElementById('countryFilter').value;
-  const genderCode=document.getElementById('genderFilter').value;
-  const filtered=allVoices.filter(v=>{
-    if(!matchesCountry(v,countryCode))return false;
-    if(genderCode==='ALL')return true;
-    const g=detectGender(v);
-    if(genderCode==='FEMALE')return g==='FEMALE'||g==='UNKNOWN';
-    if(genderCode==='MALE')return g==='MALE'||g==='UNKNOWN';
+  if(!select)return;
+  const langMode=(document.getElementById('langFilter')||{}).value||'ALL';
+  const genderMode=(document.getElementById('genderFilter')||{}).value||'FEMALE';
+
+  const basePool=(allVoices||[]).filter(isHindiOrEnglish).filter(v=>{
+    const lang=(v.lang||'').toLowerCase();
+    if(langMode==='HI')return lang.startsWith('hi');
+    if(langMode==='EN')return lang.startsWith('en');
     return true;
   });
-  const pool=filtered.length>0?filtered:allVoices;
+
+  const exactGender=basePool.filter(v=>detectGender(v)===genderMode);
+  const nonOpposite=basePool.filter(v=>detectGender(v)!==(genderMode==='FEMALE'?'MALE':'FEMALE'));
+  const finalList=exactGender.length?exactGender:(nonOpposite.length?nonOpposite:basePool);
+
   select.innerHTML='';
-  if(pool.length===0){const opt=document.createElement('option');opt.value='';opt.textContent='Default System Voice';select.appendChild(opt);return;}
-  pool.forEach((v,idx)=>{
-    const realIndex=allVoices.indexOf(v);
+  const autoOpt=document.createElement('option');
+  autoOpt.value='AUTO';
+  autoOpt.textContent=`Auto ${genderMode==='MALE'?'Male':'Female'} (${langMode==='HI'?'Hindi':langMode==='EN'?'English':'Hindi & English'})`;
+  select.appendChild(autoOpt);
+
+  finalList.forEach((v)=>{
+    const idx=allVoices.indexOf(v);
     const g=detectGender(v);
-    const gTag=g==='FEMALE'?'Female':(g==='MALE'?'Male':'Voice');
+    const gLabel=g==='FEMALE'?'Female':(g==='MALE'?'Male':(genderMode==='MALE'?'Male Command':'Female Command'));
     const opt=document.createElement('option');
-    opt.value=String(realIndex);
-    opt.textContent=`${v.name} (${v.lang}) • ${gTag}${filtered.length===0&&idx===0?' [All Voices]':''}`;
+    opt.value=String(idx);
+    opt.textContent=`${v.name} (${v.lang||'en-IN'}) • ${gLabel}`;
     select.appendChild(opt);
   });
 }
-function useTemplate(key){if(TEMPLATES[key]){document.getElementById('voiceText').value=TEMPLATES[key];updateCounts();}}
+
+function applyCommandPreset(){
+  const gender=(document.getElementById('genderFilter')||{}).value||'FEMALE';
+  const style=(document.getElementById('styleCommand')||{}).value||'natural';
+  const rateEl=document.getElementById('rateRange');
+  const pitchEl=document.getElementById('pitchRange');
+
+  let rate=gender==='MALE'?0.94:0.98;
+  let pitch=gender==='MALE'?0.86:1.12;
+
+  if(style==='expressive'){
+    rate+=0.08;
+    pitch+=gender==='MALE'?0.05:0.06;
+  }else if(style==='calm'){
+    rate-=0.08;
+    pitch-=0.04;
+  }
+
+  if(rateEl)rateEl.value=String(Math.max(0.7,Math.min(1.35,rate)));
+  if(pitchEl)pitchEl.value=String(Math.max(0.75,Math.min(1.3,pitch)));
+  updateSliders();
+  populateVoices();
+}
+
+function applyQuickCommand(){
+  const sel=document.getElementById('quickCmd');
+  if(!sel||!sel.value)return;
+  const parts=sel.value.split('_');
+  const langTag=parts[0]==='hi'?'HI':'EN';
+  const line=sel.value.slice(3);
+  const langFilter=document.getElementById('langFilter');
+  if(langFilter)langFilter.value=langTag;
+  const textEl=document.getElementById('voiceText');
+  if(textEl){textEl.value=line;updateCounts();}
+  populateVoices();
+}
+
+function useTemplate(key){
+  if(TEMPLATES[key]){
+    document.getElementById('voiceText').value=TEMPLATES[key];
+    updateCounts();
+  }
+}
+
 function updateCounts(){
   const text=document.getElementById('voiceText').value;
   const chars=text.length;
   const words=text.trim()?text.trim().split(/\s+/).length:0;
   document.getElementById('wordCharCount').textContent=`${words} words • ${chars} characters`;
 }
+
 function updateSliders(){
   document.getElementById('rateVal').textContent=Number(document.getElementById('rateRange').value).toFixed(2)+'x';
   document.getElementById('pitchVal').textContent=Number(document.getElementById('pitchRange').value).toFixed(2);
 }
-function handleSpeakRequest(){if(!getUser()){pendingSpeak=true;openLoginModal();return;}speakText();}
-function speakText(){
-  const status=document.getElementById('voiceStatus');
-  const text=document.getElementById('voiceText').value.trim();
-  if(!text){status.textContent='Please type some text first.';return;}
-  if(!('speechSynthesis' in window)){status.textContent='Voice synthesis not supported on this browser.';return;}
-  if(allVoices.length===0){allVoices=window.speechSynthesis.getVoices()||[];}
-  const selectedIdx=Number(document.getElementById('voiceSelect').value);
-  const chosenVoice=(!Number.isNaN(selectedIdx)&&allVoices[selectedIdx])?allVoices[selectedIdx]:null;
-  const rate=Number(document.getElementById('rateRange').value||'1');
-  const pitch=Number(document.getElementById('pitchRange').value||'1');
-  window.speechSynthesis.cancel();
-  const utterance=new SpeechSynthesisUtterance(text);
-  if(chosenVoice){utterance.voice=chosenVoice;utterance.lang=chosenVoice.lang;}
-  utterance.rate=rate;utterance.pitch=pitch;
-  utterance.onstart=()=>{status.textContent='Speaking: '+(chosenVoice?chosenVoice.name:'Default Voice');};
-  utterance.onend=()=>{status.textContent='Ready';};
-  utterance.onerror=()=>{status.textContent='Could not play voice on this device.';};
-  saveToHistory(text);
-  window.speechSynthesis.speak(utterance);
+
+function handleSpeakRequest(){
+  if(!studioEnabled){
+    const status=document.getElementById('voiceStatus');
+    if(status)status.textContent='Studio OFF hai — pehle ON karo.';
+    return;
+  }
+  if(!getUser()){
+    pendingSpeak=true;
+    openLoginModal();
+    return;
+  }
+  speakText();
 }
-function stopSpeech(){if('speechSynthesis' in window){window.speechSynthesis.cancel();}document.getElementById('voiceStatus').textContent='Stopped';}
-updateUI();updateSliders();updateCounts();renderHistory();loadVoicesList();
-if('speechSynthesis' in window){window.speechSynthesis.onvoiceschanged=loadVoicesList;}
+
+function speakText(){
+  const statusEl=document.getElementById('voiceStatus');
+  const textEl=document.getElementById('voiceText');
+  const text=textEl?textEl.value.trim():'';
+
+  if(!text){
+    if(statusEl)statusEl.textContent='Please type some text first.';
+    return;
+  }
+  if(!('speechSynthesis' in window)||typeof SpeechSynthesisUtterance==='undefined'){
+    if(statusEl)statusEl.textContent='Is device/browser mein voice support nahi hai.';
+    return;
+  }
+
+  try{
+    if(!allVoices||allVoices.length===0){
+      allVoices=window.speechSynthesis.getVoices()||[];
+    }
+    window.speechSynthesis.cancel();
+    if(typeof window.speechSynthesis.resume==='function'){
+      window.speechSynthesis.resume();
+    }
+
+    const utter=new SpeechSynthesisUtterance(text);
+    const voiceSelect=document.getElementById('voiceSelect');
+    const selectedVal=voiceSelect?voiceSelect.value:'AUTO';
+    const langMode=(document.getElementById('langFilter')||{}).value||'ALL';
+    const genderMode=(document.getElementById('genderFilter')||{}).value||'FEMALE';
+
+    if(selectedVal!=='AUTO'&&selectedVal!==''&&allVoices[Number(selectedVal)]){
+      utter.voice=allVoices[Number(selectedVal)];
+      if(allVoices[Number(selectedVal)].lang)utter.lang=allVoices[Number(selectedVal)].lang;
+    }else{
+      const candidates=(allVoices||[]).filter(isHindiOrEnglish).filter(v=>{
+        const l=(v.lang||'').toLowerCase();
+        if(langMode==='HI')return l.startsWith('hi');
+        if(langMode==='EN')return l.startsWith('en');
+        return true;
+      });
+      const matched=candidates.find(v=>detectGender(v)===genderMode)||candidates[0];
+      if(matched){
+        utter.voice=matched;
+        utter.lang=matched.lang;
+      }else{
+        utter.lang=langMode==='HI'?'hi-IN':'en-IN';
+      }
+    }
+
+    const rateEl=document.getElementById('rateRange');
+    const pitchEl=document.getElementById('pitchRange');
+    utter.rate=rateEl?Number(rateEl.value)||0.98:0.98;
+    utter.pitch=pitchEl?Number(pitchEl.value)||1.12:1.12;
+
+    utter.onstart=()=>{
+      setSpeakingLine(true);
+      if(statusEl)statusEl.textContent=`Speaking (${genderMode==='MALE'?'Male':'Female'})...`;
+    };
+    utter.onend=()=>{
+      setSpeakingLine(false);
+      if(statusEl)statusEl.textContent='Ready';
+    };
+    utter.onerror=()=>{
+      setSpeakingLine(false);
+      if(statusEl)statusEl.textContent='Awaaz nahi chali—media volume check karo.';
+    };
+
+    saveToHistory(text);
+    setTimeout(()=>{window.speechSynthesis.speak(utter);},40);
+  }catch(e){
+    setSpeakingLine(false);
+    if(statusEl)statusEl.textContent='Voice chalane mein dikkat aayi.';
+  }
+}
+
+function stopSpeech(){
+  setSpeakingLine(false);
+  if('speechSynthesis' in window){window.speechSynthesis.cancel();}
+  const statusEl=document.getElementById('voiceStatus');
+  if(statusEl&&studioEnabled)statusEl.textContent='Stopped';
+}
+
+updateUI();
+updateSliders();
+updateCounts();
+renderHistory();
+loadVoicesList();
+if('speechSynthesis' in window){
+  window.speechSynthesis.onvoiceschanged=loadVoicesList;
+}
 </script>
+
 </body>
 </html>
