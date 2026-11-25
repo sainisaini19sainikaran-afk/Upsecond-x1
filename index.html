@@ -5,11 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UPSECOND X1 | AI Creative Studio</title>
 <meta name="description" content="UPSECOND X1 - Your AI creative studio for voice and logo creation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 html{scroll-behavior:smooth}
 *{margin:0;padding:0;box-sizing:border-box}
 body{
-font-family:Arial,sans-serif;
+font-family:'Plus Jakarta Sans',Arial,sans-serif;
 background:#090812;color:white;
 }
 header{
@@ -21,11 +24,11 @@ background:rgba(9,8,18,0.92);
 backdrop-filter:blur(8px);
 z-index:10;
 }
-.logo{font-size:25px;font-weight:900;color:#b68aff}
+.logo{font-size:25px;font-weight:800;color:#b68aff;letter-spacing:-0.5px}
 .logo span{color:white}
 nav a{
 color:#ddd;text-decoration:none;margin-left:20px;
-font-size:14px;
+font-size:14px;font-weight:600;
 }
 nav a:hover{color:#c8a7ff}
 .hero{
@@ -35,9 +38,9 @@ background:radial-gradient(ellipse at top,#302052 0%,#090812 65%);
 .tag{
 color:#c8a7ff;border:1px solid #7049a8;
 padding:9px 16px;border-radius:30px;
-display:inline-block;font-size:12px;
+display:inline-block;font-size:12px;font-weight:600;
 }
-h1{font-size:clamp(38px,7vw,68px);margin:25px 0 15px}
+h1{font-size:clamp(38px,7vw,68px);margin:25px 0 15px;letter-spacing:-1.5px;line-height:1.1}
 h1 span{
 background:linear-gradient(90deg,#a66cff,#e0baff);
 -webkit-background-clip:text;color:transparent;
@@ -47,12 +50,12 @@ background:linear-gradient(90deg,#a66cff,#e0baff);
 display:inline-block;margin-top:28px;
 padding:14px 27px;border-radius:12px;
 background:linear-gradient(90deg,#7538d7,#a35bff);
-color:white;text-decoration:none;font-weight:bold;
+color:white;text-decoration:none;font-weight:700;
 border:0;cursor:pointer;
 }
 section{padding:55px 7%}
 .heading{text-align:center;margin-bottom:35px}
-.heading h2{font-size:32px;margin-bottom:10px}
+.heading h2{font-size:32px;margin-bottom:10px;letter-spacing:-0.5px}
 .heading p{color:#aaa}
 .tools{
 display:grid;grid-template-columns:repeat(2,1fr);
@@ -70,7 +73,7 @@ transition:.3s;
 .card button{
 margin-top:20px;padding:12px 20px;
 background:#7138c5;color:white;border:0;
-border-radius:9px;cursor:pointer;
+border-radius:9px;cursor:pointer;font-weight:600;
 }
 .card button:hover{background:#8648e0}
 .features{
@@ -99,7 +102,7 @@ padding:20px;z-index:50;
 }
 .modal-backdrop.open{display:flex}
 .modal-box{
-width:100%;max-width:400px;
+width:100%;max-width:410px;
 background:#171327;
 border:1px solid #57368c;
 border-radius:20px;
@@ -114,14 +117,31 @@ border:1px solid #6b43a8;
 padding:5px 12px;
 border-radius:20px;
 margin-bottom:14px;
+font-weight:600;
 }
 .modal-box h3{font-size:22px;margin-bottom:10px}
 .modal-box p{color:#bdb6ca;font-size:14px;line-height:1.6}
+.notify-box{
+margin-top:16px;
+display:flex;gap:8px;
+}
+.notify-box input{
+flex:1;padding:10px 12px;
+border-radius:9px;border:1px solid #442d6e;
+background:#0e0b19;color:white;font-size:13px;
+}
+.notify-box button{
+padding:10px 14px;border-radius:9px;border:0;
+background:#7d42d8;color:white;font-weight:600;cursor:pointer;font-size:13px;
+}
+.notify-msg{
+margin-top:10px;font-size:12px;color:#b8f2c8;min-height:18px;
+}
 .close-btn{
-margin-top:20px;padding:11px 22px;
+margin-top:14px;padding:10px 20px;
 border:0;border-radius:10px;
 background:linear-gradient(90deg,#7538d7,#a35bff);
-color:white;font-weight:bold;cursor:pointer;
+color:white;font-weight:700;cursor:pointer;
 }
 
 @media(max-width:600px){
@@ -131,6 +151,7 @@ nav a{margin-left:9px;font-size:12px}
 .tools{grid-template-columns:1fr}
 .features{grid-template-columns:1fr}
 .hero{padding-top:70px}
+.notify-box{flex-direction:column}
 }
 </style>
 </head>
@@ -206,6 +227,11 @@ nav a{margin-left:9px;font-size:12px}
 <div class="modal-badge">COMING SOON</div>
 <h3 id="modalTitle">Tool Name</h3>
 <p id="modalDesc">Description</p>
+<div class="notify-box">
+<input type="email" id="notifyEmail" placeholder="Enter your email for updates">
+<button type="button" onclick="saveNotify()">Notify Me</button>
+</div>
+<div class="notify-msg" id="notifyMsg"></div>
 <button type="button" class="close-btn" onclick="closeToolModal()">Got it</button>
 </div>
 </div>
@@ -220,6 +246,8 @@ Create Beyond Limits.<br>
 function openToolModal(title, desc) {
   document.getElementById('modalTitle').textContent = title;
   document.getElementById('modalDesc').textContent = desc;
+  document.getElementById('notifyEmail').value = '';
+  document.getElementById('notifyMsg').textContent = '';
   document.getElementById('toolModal').classList.add('open');
 }
 
@@ -231,6 +259,23 @@ function closeOnBackdrop(event) {
   if (event.target.id === 'toolModal') {
     closeToolModal();
   }
+}
+
+function saveNotify() {
+  const emailInput = document.getElementById('notifyEmail');
+  const msg = document.getElementById('notifyMsg');
+  const email = emailInput.value.trim();
+
+  if (!email || !email.includes('@') || !email.includes('.')) {
+    msg.style.color = '#ffb3b3';
+    msg.textContent = 'Please enter a valid email address.';
+    return;
+  }
+
+  localStorage.setItem('upsecond_notify_email', email);
+  msg.style.color = '#b8f2c8';
+  msg.textContent = 'Saved! We will notify you when it launches.';
+  emailInput.value = '';
 }
 </script>
 
