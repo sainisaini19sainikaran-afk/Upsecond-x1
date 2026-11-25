@@ -6,6 +6,7 @@
 <title>UPSECOND X1 | AI Creative Studio</title>
 <meta name="description" content="UPSECOND X1 - Your AI creative studio for voice and logo creation.">
 <style>
+html{scroll-behavior:smooth}
 *{margin:0;padding:0;box-sizing:border-box}
 body{
 font-family:Arial,sans-serif;
@@ -15,6 +16,10 @@ header{
 display:flex;justify-content:space-between;
 align-items:center;padding:20px 7%;
 border-bottom:1px solid #29223c;
+position:sticky;top:0;
+background:rgba(9,8,18,0.92);
+backdrop-filter:blur(8px);
+z-index:10;
 }
 .logo{font-size:25px;font-weight:900;color:#b68aff}
 .logo span{color:white}
@@ -22,6 +27,7 @@ nav a{
 color:#ddd;text-decoration:none;margin-left:20px;
 font-size:14px;
 }
+nav a:hover{color:#c8a7ff}
 .hero{
 text-align:center;padding:90px 20px 65px;
 background:radial-gradient(ellipse at top,#302052 0%,#090812 65%);
@@ -66,6 +72,7 @@ margin-top:20px;padding:12px 20px;
 background:#7138c5;color:white;border:0;
 border-radius:9px;cursor:pointer;
 }
+.card button:hover{background:#8648e0}
 .features{
 display:grid;grid-template-columns:repeat(3,1fr);
 gap:15px;text-align:center;
@@ -82,6 +89,41 @@ border-top:1px solid #302442;color:#aaa;
 font-size:13px;line-height:2;
 }
 footer strong{color:#bd91ff}
+
+.modal-backdrop{
+display:none;
+position:fixed;inset:0;
+background:rgba(0,0,0,0.72);
+justify-content:center;align-items:center;
+padding:20px;z-index:50;
+}
+.modal-backdrop.open{display:flex}
+.modal-box{
+width:100%;max-width:400px;
+background:#171327;
+border:1px solid #57368c;
+border-radius:20px;
+padding:26px;
+text-align:center;
+}
+.modal-badge{
+display:inline-block;
+font-size:11px;
+color:#d4b8ff;
+border:1px solid #6b43a8;
+padding:5px 12px;
+border-radius:20px;
+margin-bottom:14px;
+}
+.modal-box h3{font-size:22px;margin-bottom:10px}
+.modal-box p{color:#bdb6ca;font-size:14px;line-height:1.6}
+.close-btn{
+margin-top:20px;padding:11px 22px;
+border:0;border-radius:10px;
+background:linear-gradient(90deg,#7538d7,#a35bff);
+color:white;font-weight:bold;cursor:pointer;
+}
+
 @media(max-width:600px){
 header{padding:17px 5%}
 nav a{margin-left:9px;font-size:12px}
@@ -122,14 +164,14 @@ nav a{margin-left:9px;font-size:12px}
 <div class="icon">🎙️</div>
 <h3>AI Voice Studio</h3>
 <p>Turn your text into voice with our planned AI voice generation tool.</p>
-<button onclick="alert('AI Voice Studio is coming soon!')">Explore Voice →</button>
+<button type="button" onclick="openToolModal('AI Voice Studio', 'Text-to-voice generation is currently under development and will launch soon.')">Explore Voice →</button>
 </div>
 
 <div class="card">
 <div class="icon">🎨</div>
 <h3>AI Logo Maker</h3>
 <p>Bring your brand ideas to life with our planned AI logo creation tool.</p>
-<button onclick="alert('AI Logo Maker is coming soon!')">Create Logo →</button>
+<button type="button" onclick="openToolModal('AI Logo Maker', 'AI brand logo creation is currently in progress and will be available soon.')">Create Logo →</button>
 </div>
 </div>
 </section>
@@ -159,11 +201,38 @@ nav a{margin-left:9px;font-size:12px}
 </section>
 </main>
 
+<div class="modal-backdrop" id="toolModal" onclick="closeOnBackdrop(event)">
+<div class="modal-box">
+<div class="modal-badge">COMING SOON</div>
+<h3 id="modalTitle">Tool Name</h3>
+<p id="modalDesc">Description</p>
+<button type="button" class="close-btn" onclick="closeToolModal()">Got it</button>
+</div>
+</div>
+
 <footer>
 <strong>UPSECOND X1</strong><br>
 Create Beyond Limits.<br>
 © 2026 UPSECOND X1. All Rights Reserved.
 </footer>
+
+<script>
+function openToolModal(title, desc) {
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalDesc').textContent = desc;
+  document.getElementById('toolModal').classList.add('open');
+}
+
+function closeToolModal() {
+  document.getElementById('toolModal').classList.remove('open');
+}
+
+function closeOnBackdrop(event) {
+  if (event.target.id === 'toolModal') {
+    closeToolModal();
+  }
+}
+</script>
 
 </body>
 </html>
