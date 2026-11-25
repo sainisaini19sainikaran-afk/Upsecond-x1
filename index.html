@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UPSECOND X1 | AI Creative Studio</title>
-<meta name="description" content="UPSECOND X1 - Your AI creative studio for voice and logo creation.">
+<title>UPSECOND X1 | AI Voice Studio</title>
+<meta name="description" content="UPSECOND X1 - Professional AI Voice Studio with multi-country Male & Female voices.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -33,13 +33,13 @@ font-size:13px;font-weight:600;
 }
 nav a:hover{color:#c8a7ff}
 .nav-auth-btn{
-padding:8px 13px;border-radius:9px;border:1px solid #6b43a8;
+padding:8px 14px;border-radius:9px;border:1px solid #6b43a8;
 background:#1a142d;color:#e5d4ff;font-size:12px;font-weight:700;cursor:pointer;
 }
 .nav-auth-btn:hover{background:#281e44}
 
 .hero{
-text-align:center;padding:85px 20px 65px;
+text-align:center;padding:85px 20px 60px;
 background:radial-gradient(ellipse at top,#302052 0%,#090812 65%);
 }
 .tag{
@@ -47,7 +47,7 @@ color:#c8a7ff;border:1px solid #7049a8;
 padding:9px 16px;border-radius:30px;
 display:inline-block;font-size:12px;font-weight:600;
 }
-h1{font-size:clamp(38px,7vw,68px);margin:25px 0 15px;letter-spacing:-1.5px;line-height:1.1}
+h1{font-size:clamp(38px,7vw,66px);margin:24px 0 14px;letter-spacing:-1.5px;line-height:1.1}
 h1 span{
 background:linear-gradient(90deg,#a66cff,#e0baff);
 -webkit-background-clip:text;color:transparent;
@@ -56,7 +56,7 @@ background:linear-gradient(90deg,#a66cff,#e0baff);
 .usage-pill{
 margin-top:18px;display:inline-block;
 background:#151124;border:1px solid #3c295c;
-padding:8px 14px;border-radius:10px;font-size:12px;color:#d6beff;
+padding:8px 15px;border-radius:10px;font-size:12px;color:#d6beff;
 }
 .btn{
 display:inline-block;margin-top:24px;
@@ -65,84 +65,66 @@ background:linear-gradient(90deg,#7538d7,#a35bff);
 color:white;text-decoration:none;font-weight:700;
 border:0;cursor:pointer;
 }
-section{padding:55px 7%}
-.heading{text-align:center;margin-bottom:35px}
+
+section{padding:52px 7%}
+.heading{text-align:center;margin-bottom:32px}
 .heading h2{font-size:32px;margin-bottom:10px;letter-spacing:-0.5px}
 .heading p{color:#aaa}
 
-.tools{
-display:grid;grid-template-columns:repeat(2,1fr);
-gap:20px;max-width:850px;margin:auto;
-}
-.card{
+.studio-wrap{
+max-width:860px;margin:0 auto;
 background:#151222;border:1px solid #34264c;
-padding:30px;border-radius:20px;
-transition:.3s;
+padding:28px;border-radius:22px;
 }
-.card:hover{transform:translateY(-5px);border-color:#a66cff}
-.icon{font-size:38px;margin-bottom:20px}
-.card h3{font-size:22px;margin-bottom:12px}
-.card p{color:#aaa;line-height:1.6;font-size:14px}
-.card button{
-margin-top:20px;padding:12px 20px;
-background:#7138c5;color:white;border:0;
-border-radius:9px;cursor:pointer;font-weight:600;
+.controls-grid{
+display:grid;grid-template-columns:repeat(3,1fr);
+gap:12px;margin-bottom:12px;
 }
-.card button:hover{background:#8648e0}
-
-.studio-grid{
-display:grid;grid-template-columns:repeat(2,1fr);
-gap:22px;max-width:960px;margin:0 auto;
+.field-label{
+display:block;font-size:12px;color:#c9bfe0;
+margin-bottom:5px;font-weight:600;
 }
-.studio-box{
-background:#151222;border:1px solid #34264c;
-padding:26px;border-radius:20px;
-}
-.studio-box h3{font-size:20px;margin-bottom:8px}
-.studio-sub{font-size:13px;color:#aaa;margin-bottom:14px;line-height:1.5}
-.studio-box textarea,
-.studio-box input[type="text"],
-.studio-box select{
+.studio-wrap select,
+.studio-wrap textarea{
 width:100%;padding:11px 13px;border-radius:11px;
 border:1px solid #442d6e;background:#0e0b19;color:white;
-font-family:inherit;font-size:14px;margin-bottom:10px;
+font-family:inherit;font-size:13px;
 }
-.studio-box textarea{min-height:85px;resize:vertical}
-.row-2{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;margin-bottom:10px}
-.row-2 input[type="color"]{
-width:54px;height:42px;border:1px solid #442d6e;border-radius:10px;
-background:#0e0b19;padding:3px;cursor:pointer;
+.voice-select-row{margin-bottom:12px}
+.sliders-grid{
+display:grid;grid-template-columns:repeat(2,1fr);
+gap:14px;margin:12px 0 14px;
+background:#100c1b;border:1px solid #2b1f45;
+padding:14px;border-radius:14px;
+}
+.slider-item label{
+display:flex;justify-content:space-between;
+font-size:12px;color:#d6c9f2;margin-bottom:6px;font-weight:600;
+}
+.slider-item input[type="range"]{
+width:100%;accent-color:#9b5cff;cursor:pointer;
+}
+.studio-wrap textarea{
+min-height:110px;resize:vertical;font-size:14px;line-height:1.5;
 }
 .demo-actions{
-margin-top:6px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+margin-top:14px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;
 }
 .demo-btn{
-padding:11px 18px;border-radius:10px;border:0;
+padding:12px 22px;border-radius:11px;border:0;
 background:linear-gradient(90deg,#7538d7,#a35bff);
-color:white;font-weight:700;cursor:pointer;font-size:13px;
+color:white;font-weight:700;cursor:pointer;font-size:14px;
 }
 .demo-stop{
-padding:11px 15px;border-radius:10px;
+padding:12px 17px;border-radius:11px;
 border:1px solid #442d6e;background:#1b162d;
-color:#ddd;font-weight:600;cursor:pointer;font-size:13px;
+color:#ddd;font-weight:600;cursor:pointer;font-size:14px;
 }
-.demo-status{font-size:12px;color:#c8a7ff;width:100%;margin-top:4px}
-
-.logo-preview{
-margin-top:14px;background:#0b0815;border:1px dashed #553787;
-border-radius:16px;padding:22px;text-align:center;
-}
-.logo-mark{
-width:64px;height:64px;border-radius:18px;margin:0 auto 12px;
-display:flex;align-items:center;justify-content:center;
-font-size:26px;font-weight:800;color:white;
-}
-.logo-brand-out{font-size:21px;font-weight:800;letter-spacing:-0.3px}
-.logo-tag-out{font-size:12px;color:#b8b0cb;margin-top:4px}
+.demo-status{font-size:13px;color:#c8a7ff;margin-left:auto}
 
 .features{
 display:grid;grid-template-columns:repeat(3,1fr);
-gap:15px;text-align:center;
+gap:15px;text-align:center;max-width:960px;margin:0 auto;
 }
 .feature{
 background:#151222;padding:22px;
@@ -150,6 +132,7 @@ border-radius:15px;border:1px solid #302442;
 }
 .feature h3{margin:10px 0}
 .feature p{font-size:13px;color:#aaa}
+
 footer{
 text-align:center;padding:30px 15px;
 border-top:1px solid #302442;color:#aaa;
@@ -209,7 +192,8 @@ background:transparent;color:#ccc;font-weight:600;cursor:pointer;font-size:13px;
 }
 
 @media(max-width:760px){
-.studio-grid{grid-template-columns:1fr}
+.controls-grid{grid-template-columns:1fr}
+.sliders-grid{grid-template-columns:1fr}
 }
 @media(max-width:600px){
 header{padding:15px 5%}
@@ -217,9 +201,9 @@ header{padding:15px 5%}
 nav{gap:9px}
 nav a{font-size:12px}
 .nav-auth-btn{padding:6px 10px;font-size:11px}
-.tools{grid-template-columns:1fr}
 .features{grid-template-columns:1fr}
 .hero{padding-top:70px}
+.demo-status{margin-left:0;width:100%}
 }
 </style>
 </head>
@@ -229,145 +213,132 @@ nav a{font-size:12px}
 <div class="logo">UPSECOND <span>X1</span></div>
 <nav>
 <a href="#home">Home</a>
-<a href="#tools">AI Tools</a>
-<a href="#studio">Workspace</a>
+<a href="#studio">Voice Studio</a>
 <a href="#about">About</a>
-<button type="button" class="nav-auth-btn" id="authNavBtn" onclick="openLoginModal()">Login</button>
+<button type="button" class="nav-auth-btn" id="authNavBtn" onclick="openLoginModal()">Sign In</button>
 </nav>
 </header>
 
 <main>
 <div class="hero" id="home">
-<div class="tag">✦ YOUR AI CREATIVE STUDIO</div>
+<div class="tag">✦ PRO AI VOICE STUDIO</div>
 <h1>Create Beyond <span>Limits.</span></h1>
-<p>Welcome to UPSECOND X1. Login to use our working AI tools — your first 3 uses are completely FREE.</p>
-<div class="usage-pill" id="statusPill">Status: Not Logged In • First 3 uses FREE</div><br>
-<a href="#studio" class="btn">Open AI Workspace →</a>
+<p>Sign in with your account to generate voices across countries and languages with Male &amp; Female voice options.</p>
+<div class="usage-pill" id="statusPill">Account: Not Signed In • Sign in to use Voice Studio</div><br>
+<a href="#studio" class="btn">Open Voice Studio →</a>
 </div>
-
-<section id="tools">
-<div class="heading">
-<h2>Our AI Tools</h2>
-<p>Login required • First 3 free uses included.</p>
-</div>
-
-<div class="tools">
-<div class="card">
-<div class="icon">🎙️</div>
-<h3>AI Voice Studio</h3>
-<p>Turn your text into spoken voice with speed and pitch controls.</p>
-<button type="button" onclick="jumpToTool('voice')">Explore Voice →</button>
-</div>
-
-<div class="card">
-<div class="icon">🎨</div>
-<h3>AI Logo Maker</h3>
-<p>Create a custom brand logo badge, name, tagline, and download it as SVG.</p>
-<button type="button" onclick="jumpToTool('logo')">Create Logo →</button>
-</div>
-</div>
-</section>
 
 <section id="studio">
 <div class="heading">
-<h2>AI Creative Workspace</h2>
-<p>Each generation uses 1 of your 3 free credits (after login).</p>
+<h2>AI Voice Studio</h2>
+<p>Country / Language aur Male / Female voice choose karke text ko speech mein badlo.</p>
 </div>
 
-<div class="studio-grid">
-<div class="studio-box" id="voiceBox">
-<h3>🎙️ AI Voice Studio</h3>
-<p class="studio-sub">Text likh kar voice preview suno aur speed/pitch adjust karo.</p>
-<textarea id="voiceText">Welcome to UPSECOND X1. Create beyond limits with AI.</textarea>
-<select id="voiceRate">
-<option value="1">Normal Speed (1.0x)</option>
-<option value="0.85">Slow & Calm (0.85x)</option>
-<option value="1.2">Fast & Energetic (1.2x)</option>
+<div class="studio-wrap">
+<div class="controls-grid">
+<div>
+<label class="field-label" for="countryFilter">Country / Region</label>
+<select id="countryFilter" onchange="populateVoices()">
+<option value="ALL">All Countries / Languages</option>
+<option value="IN">India (en-IN / hi-IN)</option>
+<option value="US">United States (en-US)</option>
+<option value="GB">United Kingdom (en-GB)</option>
+<option value="AU">Australia (en-AU)</option>
+<option value="CA">Canada (en-CA)</option>
+<option value="DE">Germany (de-DE)</option>
+<option value="FR">France (fr-FR)</option>
+<option value="ES">Spain / Latin America (es)</option>
+<option value="JP">Japan (ja-JP)</option>
+<option value="KR">South Korea (ko-KR)</option>
+<option value="AE">Arabic / Middle East (ar)</option>
 </select>
+</div>
+
+<div>
+<label class="field-label" for="genderFilter">Voice Gender Style</label>
+<select id="genderFilter" onchange="populateVoices()">
+<option value="ALL">All (Male &amp; Female)</option>
+<option value="FEMALE">Female Voices</option>
+<option value="MALE">Male Voices</option>
+</select>
+</div>
+
+<div>
+<label class="field-label" for="presetSample">Sample Script</label>
+<select id="presetSample" onchange="applySample()">
+<option value="">-- Choose Sample Text --</option>
+<option value="Welcome to UPSECOND X1 AI Voice Studio. Create clear, natural voiceovers in seconds.">English Studio Intro</option>
+<option value="नमस्ते! UPSECOND X1 वॉइस स्टूडियो में आपका स्वागत है।">Hindi Greeting</option>
+<option value="Hello from UPSECOND X1! Testing multi-country voice synthesis today.">Global Test Line</option>
+</select>
+</div>
+</div>
+
+<div class="voice-select-row">
+<label class="field-label" for="voiceSelect">Select Voice</label>
+<select id="voiceSelect"></select>
+</div>
+
+<div class="sliders-grid">
+<div class="slider-item">
+<label for="rateRange"><span>Speed (Rate)</span><span id="rateVal">1.0x</span></label>
+<input type="range" id="rateRange" min="0.6" max="1.6" step="0.05" value="1" oninput="updateSliders()">
+</div>
+<div class="slider-item">
+<label for="pitchRange"><span>Pitch</span><span id="pitchVal">1.0</span></label>
+<input type="range" id="pitchRange" min="0.6" max="1.4" step="0.05" value="1" oninput="updateSliders()">
+</div>
+</div>
+
+<label class="field-label" for="voiceText">Your Script / Text</label>
+<textarea id="voiceText">Welcome to UPSECOND X1 AI Voice Studio. Type any text and select a country and voice to speak.</textarea>
+
 <div class="demo-actions">
-<button type="button" class="demo-btn" onclick="runVoiceStudio()">Speak Text</button>
+<button type="button" class="demo-btn" onclick="handleSpeakRequest()">Generate &amp; Speak</button>
 <button type="button" class="demo-stop" onclick="stopSpeech()">Stop</button>
 <span class="demo-status" id="voiceStatus">Ready</span>
-</div>
-</div>
-
-<div class="studio-box" id="logoBox">
-<h3>🎨 AI Logo Maker</h3>
-<p class="studio-sub">Brand ka naam, tagline, aur color choose karke logo generate aur download karo.</p>
-<input type="text" id="brandName" value="UPSECOND X1" placeholder="Brand Name">
-<input type="text" id="brandTagline" value="AI Creative Studio" placeholder="Tagline">
-<div class="row-2">
-<select id="logoShape">
-<option value="rounded">Rounded Badge</option>
-<option value="circle">Circle Badge</option>
-<option value="square">Sharp Square</option>
-</select>
-<input type="color" id="brandColor" value="#7c3aed" title="Pick Logo Color">
-</div>
-<div class="demo-actions">
-<button type="button" class="demo-btn" onclick="runLogoMaker()">Generate Logo</button>
-<button type="button" class="demo-stop" onclick="downloadLogoSVG()">Download SVG</button>
-<span class="demo-status" id="logoStatus">Ready</span>
-</div>
-
-<div class="logo-preview">
-<div class="logo-mark" id="logoMark" style="background:#7c3aed">UX</div>
-<div class="logo-brand-out" id="logoBrandOut">UPSECOND X1</div>
-<div class="logo-tag-out" id="logoTagOut">AI Creative Studio</div>
-</div>
 </div>
 </div>
 </section>
 
 <section id="about">
 <div class="heading">
-<h2>Why UPSECOND X1?</h2>
-<p>One creative destination. Endless possibilities.</p>
+<h2>Why UPSECOND X1 Voice?</h2>
+<p>Clean, fast, and built for creators.</p>
 </div>
 <div class="features">
 <div class="feature">
-<div class="icon">⚡</div>
-<h3>Fast & Simple</h3>
-<p>A clean and easy experience.</p>
+<div class="icon">🌍</div>
+<h3>Multi-Country</h3>
+<p>Filter voices by country and language.</p>
 </div>
 <div class="feature">
-<div class="icon">🔒</div>
-<h3>User Friendly</h3>
-<p>Designed with users in mind.</p>
+<div class="icon">🎙️</div>
+<h3>Male &amp; Female</h3>
+<p>Pick male or female voices with pitch &amp; speed control.</p>
 </div>
 <div class="feature">
-<div class="icon">💜</div>
-<h3>Creative Freedom</h3>
-<p>Make your ideas come alive.</p>
+<div class="icon">🔐</div>
+<h3>Account Sign-In</h3>
+<p>Simple login/sign-in flow for your studio session.</p>
 </div>
 </div>
 </section>
 </main>
 
-<!-- Login Modal -->
+<!-- Login / Sign In Modal -->
 <div class="modal-backdrop" id="loginModal" onclick="closeOnBackdrop(event, 'loginModal')">
 <div class="modal-box">
-<div class="modal-badge">LOGIN REQUIRED</div>
-<h3>Login to UPSECOND X1</h3>
-<p>Sign in to use AI tools. Your first <strong>3 uses are FREE</strong>.</p>
+<div class="modal-badge">SIGN IN / LOGIN</div>
+<h3>Sign In to UPSECOND X1</h3>
+<p>Enter your name and email to sign in and use the AI Voice Studio.</p>
 <div class="input-stack">
-<input type="text" id="loginName" placeholder="Enter your name">
-<input type="email" id="loginEmail" placeholder="Enter your email">
+<input type="text" id="loginName" placeholder="Your Name">
+<input type="email" id="loginEmail" placeholder="Your Email">
 </div>
 <div class="notify-msg" id="loginMsg"></div>
-<button type="button" class="primary-modal-btn" onclick="submitLogin()">Continue & Login</button>
+<button type="button" class="primary-modal-btn" onclick="submitLogin()">Sign In</button>
 <button type="button" class="close-btn" onclick="closeModal('loginModal')">Cancel</button>
-</div>
-</div>
-
-<!-- Free Limit Reached Modal (No Payment) -->
-<div class="modal-backdrop" id="limitModal" onclick="closeOnBackdrop(event, 'limitModal')">
-<div class="modal-box">
-<div class="modal-badge">FREE USES FINISHED (3/3)</div>
-<h3>3 Free Uses Complete</h3>
-<p>Aapke 3 free uses poore ho gaye hain. Naya session reset karna ho toh neeche Reset Free Uses dabao.</p>
-<button type="button" class="primary-modal-btn" onclick="resetFreeUses()">Reset 3 Free Uses</button>
-<button type="button" class="close-btn" onclick="closeModal('limitModal')">Close</button>
 </div>
 </div>
 
@@ -378,37 +349,40 @@ Create Beyond Limits.<br>
 </footer>
 
 <script>
-const FREE_LIMIT = 3;
-let pendingAction = null;
+let allVoices = [];
+let pendingSpeak = false;
+
+const FEMALE_HINTS = [
+  'female', 'woman', 'girl', 'zira', 'hazel', 'susan', 'samantha', 'victoria',
+  'karen', 'moira', 'tessa', 'fiona', 'veena', 'lekha', 'aditi', 'heera',
+  'priya', 'aria', 'jenny', 'ava', 'emma', 'olivia', 'claire', 'amelie',
+  'marlene', 'vicki', 'kyoko', 'haruka', 'yuna', 'seoyeon', 'salma', 'hoda'
+];
+
+const MALE_HINTS = [
+  'male', 'man', 'boy', 'david', 'mark', 'george', 'daniel', 'arthur',
+  'rishi', 'prabhat', 'ravi', 'guy', 'christopher', 'ryan', 'aaron', 'alex',
+  'fred', 'thomas', 'oliver', 'henrik', 'otoya', 'ichiro', 'minho', 'tariq'
+];
 
 function getUser() {
   const raw = localStorage.getItem('upsecond_user');
   return raw ? JSON.parse(raw) : null;
 }
 
-function getUsedCount() {
-  return Number(localStorage.getItem('upsecond_free_used') || '0');
-}
-
-function setUsedCount(count) {
-  localStorage.setItem('upsecond_free_used', String(count));
-}
-
 function updateUI() {
   const user = getUser();
-  const used = getUsedCount();
-  const left = Math.max(0, FREE_LIMIT - used);
   const authBtn = document.getElementById('authNavBtn');
   const pill = document.getElementById('statusPill');
 
   if (user) {
-    authBtn.textContent = user.name.split(' ')[0] + ' (Logout)';
-    authBtn.onclick = logoutUser;
-    pill.textContent = 'Logged in as ' + user.name + ' • ' + left + ' of ' + FREE_LIMIT + ' FREE uses left';
+    authBtn.textContent = user.name.split(' ')[0] + ' (Sign Out)';
+    authBtn.onclick = signOutUser;
+    pill.textContent = 'Signed in as ' + user.name + ' (' + user.email + ')';
   } else {
-    authBtn.textContent = 'Login';
+    authBtn.textContent = 'Sign In';
     authBtn.onclick = openLoginModal;
-    pill.textContent = 'Status: Not Logged In • First ' + FREE_LIMIT + ' uses FREE';
+    pill.textContent = 'Account: Not Signed In • Click "Generate & Speak" or "Sign In"';
   }
 }
 
@@ -440,14 +414,13 @@ function submitLogin() {
   updateUI();
   closeModal('loginModal');
 
-  if (pendingAction) {
-    const action = pendingAction;
-    pendingAction = null;
-    action();
+  if (pendingSpeak) {
+    pendingSpeak = false;
+    speakText();
   }
 }
 
-function logoutUser() {
+function signOutUser() {
   localStorage.removeItem('upsecond_user');
   updateUI();
 }
@@ -462,61 +435,127 @@ function closeOnBackdrop(event, id) {
   }
 }
 
-function resetFreeUses() {
-  setUsedCount(0);
-  updateUI();
-  closeModal('limitModal');
+function detectGender(voice) {
+  const label = ((voice.name || '') + ' ' + (voice.voiceURI || '')).toLowerCase();
+  if (FEMALE_HINTS.some(h => label.includes(h))) return 'FEMALE';
+  if (MALE_HINTS.some(h => label.includes(h))) return 'MALE';
+  return 'UNKNOWN';
 }
 
-function consumeFreeCredit(actionFn) {
-  if (!getUser()) {
-    pendingAction = actionFn;
-    openLoginModal();
-    return false;
-  }
-  const used = getUsedCount();
-  if (used >= FREE_LIMIT) {
-    document.getElementById('limitModal').classList.add('open');
-    return false;
-  }
-  setUsedCount(used + 1);
-  updateUI();
-  return true;
+function matchesCountry(voice, code) {
+  if (code === 'ALL') return true;
+  const lang = (voice.lang || '').toUpperCase();
+  if (code === 'IN') return lang.includes('-IN') || lang.startsWith('HI') || lang.startsWith('TA') || lang.startsWith('TE') || lang.startsWith('BN') || lang.startsWith('MR');
+  if (code === 'ES') return lang.startsWith('ES');
+  if (code === 'AE') return lang.startsWith('AR');
+  return lang.includes('-' + code) || lang.endsWith(code);
 }
 
-function jumpToTool(tool) {
-  const targetId = tool === 'voice' ? 'voiceBox' : 'logoBox';
-  const el = document.getElementById(targetId);
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
+function loadVoicesList() {
+  if (!('speechSynthesis' in window)) return;
+  allVoices = window.speechSynthesis.getVoices() || [];
+  populateVoices();
 }
 
-function runVoiceStudio() {
-  const status = document.getElementById('voiceStatus');
-  const text = document.getElementById('voiceText').value.trim();
-  const rate = Number(document.getElementById('voiceRate').value || '1');
+function populateVoices() {
+  const select = document.getElementById('voiceSelect');
+  const countryCode = document.getElementById('countryFilter').value;
+  const genderCode = document.getElementById('genderFilter').value;
 
-  if (!text) {
-    status.textContent = 'Please enter text first.';
+  const filtered = allVoices.filter(v => {
+    if (!matchesCountry(v, countryCode)) return false;
+    if (genderCode === 'ALL') return true;
+    const g = detectGender(v);
+    if (genderCode === 'FEMALE') return g === 'FEMALE' || g === 'UNKNOWN';
+    if (genderCode === 'MALE') return g === 'MALE' || g === 'UNKNOWN';
+    return true;
+  });
+
+  const pool = filtered.length > 0 ? filtered : allVoices;
+  select.innerHTML = '';
+
+  if (pool.length === 0) {
+    const opt = document.createElement('option');
+    opt.value = '';
+    opt.textContent = 'Default System Voice';
+    select.appendChild(opt);
     return;
   }
 
-  const allowed = consumeFreeCredit(() => runVoiceStudio());
-  if (!allowed) return;
+  pool.forEach((v, idx) => {
+    const realIndex = allVoices.indexOf(v);
+    const g = detectGender(v);
+    const gTag = g === 'FEMALE' ? 'Female' : (g === 'MALE' ? 'Male' : 'Voice');
+    const opt = document.createElement('option');
+    opt.value = String(realIndex);
+    opt.textContent = `${v.name} (${v.lang}) • ${gTag}${filtered.length === 0 && idx === 0 ? ' [All Voices]' : ''}`;
+    select.appendChild(opt);
+  });
+}
+
+function updateSliders() {
+  document.getElementById('rateVal').textContent = Number(document.getElementById('rateRange').value).toFixed(2) + 'x';
+  document.getElementById('pitchVal').textContent = Number(document.getElementById('pitchRange').value).toFixed(2);
+}
+
+function applySample() {
+  const val = document.getElementById('presetSample').value;
+  if (val) {
+    document.getElementById('voiceText').value = val;
+  }
+}
+
+function handleSpeakRequest() {
+  if (!getUser()) {
+    pendingSpeak = true;
+    openLoginModal();
+    return;
+  }
+  speakText();
+}
+
+function speakText() {
+  const status = document.getElementById('voiceStatus');
+  const text = document.getElementById('voiceText').value.trim();
+
+  if (!text) {
+    status.textContent = 'Please type some text first.';
+    return;
+  }
 
   if (!('speechSynthesis' in window)) {
     status.textContent = 'Voice synthesis not supported on this browser.';
     return;
   }
 
+  if (allVoices.length === 0) {
+    allVoices = window.speechSynthesis.getVoices() || [];
+  }
+
+  const selectedIdx = Number(document.getElementById('voiceSelect').value);
+  const chosenVoice = (!Number.isNaN(selectedIdx) && allVoices[selectedIdx]) ? allVoices[selectedIdx] : null;
+  const rate = Number(document.getElementById('rateRange').value || '1');
+  const pitch = Number(document.getElementById('pitchRange').value || '1');
+
   window.speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
+  if (chosenVoice) {
+    utterance.voice = chosenVoice;
+    utterance.lang = chosenVoice.lang;
+  }
   utterance.rate = rate;
-  const left = Math.max(0, FREE_LIMIT - getUsedCount());
-  utterance.onstart = () => { status.textContent = 'Speaking... (' + left + ' free left)'; };
-  utterance.onend = () => { status.textContent = 'Done (' + left + ' free left)'; };
-  utterance.onerror = () => { status.textContent = 'Could not play voice.'; };
+  utterance.pitch = pitch;
+
+  utterance.onstart = () => {
+    status.textContent = 'Speaking: ' + (chosenVoice ? chosenVoice.name : 'Default Voice');
+  };
+  utterance.onend = () => {
+    status.textContent = 'Ready';
+  };
+  utterance.onerror = () => {
+    status.textContent = 'Could not play voice on this device.';
+  };
+
   window.speechSynthesis.speak(utterance);
 }
 
@@ -527,69 +566,12 @@ function stopSpeech() {
   document.getElementById('voiceStatus').textContent = 'Stopped';
 }
 
-function getInitials(name) {
-  const parts = name.trim().split(/\s+/).filter(Boolean);
-  if (parts.length === 0) return 'UX';
-  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
-  return (parts[0][0] + parts[1][0]).toUpperCase();
-}
-
-function runLogoMaker() {
-  const brand = document.getElementById('brandName').value.trim() || 'UPSECOND X1';
-  const tagline = document.getElementById('brandTagline').value.trim() || 'AI Creative Studio';
-  const color = document.getElementById('brandColor').value || '#7c3aed';
-  const shape = document.getElementById('logoShape').value || 'rounded';
-  const status = document.getElementById('logoStatus');
-
-  const allowed = consumeFreeCredit(() => runLogoMaker());
-  if (!allowed) return;
-
-  const mark = document.getElementById('logoMark');
-  mark.textContent = getInitials(brand);
-  mark.style.background = color;
-  mark.style.borderRadius = shape === 'circle' ? '999px' : (shape === 'square' ? '8px' : '18px');
-
-  document.getElementById('logoBrandOut').textContent = brand;
-  document.getElementById('logoTagOut').textContent = tagline;
-
-  const left = Math.max(0, FREE_LIMIT - getUsedCount());
-  status.textContent = 'Logo generated! (' + left + ' free left)';
-}
-
-function escapeXml(str) {
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
-
-function downloadLogoSVG() {
-  const brand = document.getElementById('logoBrandOut').textContent.trim() || 'UPSECOND X1';
-  const tagline = document.getElementById('logoTagOut').textContent.trim() || 'AI Creative Studio';
-  const color = document.getElementById('brandColor').value || '#7c3aed';
-  const initials = getInitials(brand);
-
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="500" height="220" viewBox="0 0 500 220">
-  <rect width="500" height="220" rx="24" fill="#120e1f"/>
-  <rect x="35" y="45" width="130" height="130" rx="28" fill="${escapeXml(color)}"/>
-  <text x="100" y="126" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="44" font-weight="bold">${escapeXml(initials)}</text>
-  <text x="190" y="102" fill="#ffffff" font-family="Arial, sans-serif" font-size="30" font-weight="bold">${escapeXml(brand)}</text>
-  <text x="190" y="138" fill="#c7bddc" font-family="Arial, sans-serif" font-size="16">${escapeXml(tagline)}</text>
-</svg>`;
-
-  const blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = brand.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '-logo.svg';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-}
-
 updateUI();
+updateSliders();
+loadVoicesList();
+if ('speechSynthesis' in window) {
+  window.speechSynthesis.onvoiceschanged = loadVoicesList;
+}
 </script>
 
 </body>
