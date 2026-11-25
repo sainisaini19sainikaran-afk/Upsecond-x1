@@ -1,260 +1,135 @@
-let speakSessionId = 0;
-let isSpeakingActive = false;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UPSECOND X1 | AI Voice Studio</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#090812;color:#fff;padding:20px}
+.box{max-width:720px;margin:0 auto;background:#151222;border:1px solid #3c295c;border-radius:16px;padding:20px}
+h1{font-size:28px;color:#c8a7ff;margin-bottom:8px}
+p{color:#bdb6ca;font-size:14px;margin-bottom:14px}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+select,input,textarea{width:100%;padding:10px;border-radius:10px;border:1px solid #442d6e;background:#0e0b19;color:#fff;font-size:14px}
+textarea{min-height:100px;margin-bottom:12px}
+button{padding:11px 18px;border-radius:10px;border:0;background:#8848eb;color:#fff;font-weight:700;cursor:pointer}
+button.sec{background:#231b38;border:1px solid #4b3178}
+.bar{height:4px;background:#261c3d;border-radius:99px;overflow:hidden;margin:10px 0}
+.bar span{display:block;height:100%;width:30%;background:#c8a7ff;transition:transform .3s}
+.status{font-size:13px;color:#d6beff;margin-top:8px}
+.hist{margin-top:14px;border-top:1px solid #2b1f45;padding-top:12px;font-size:13px;color:#cfc5e6}
+</style>
+</head>
+<body>
+<div class="box">
+  <h1>UPSECOND X1</h1>
+  <p>AI Voice Studio — Hindi &amp; English • Male &amp; Female</p>
 
-const SETTINGS_KEY = 'upsecond_voice_settings_v2';
+  <div class="row" id="authBox">
+    <input type="text" id="uName" placeholder="Your Name" style="flex:1;min-width:160px">
+    <input type="email" id="uEmail" placeholder="Your Email" style="flex:1;min-width:160px">
+    <button type="button" onclick="signIn()">Sign In</button>
+  </div>
+  <div class="status" id="userStatus">Status: Sign in karke voice chalao</div>
 
-function saveVoiceSettings() {
-  const data = {
-    lang: (document.getElementById('langFilter') || {}).value || 'ALL',
-    gender: (document.getElementById('genderFilter') || {}).value || 'FEMALE',
-    style: (document.getElementById('styleCommand') || {}).value || 'natural',
-    rate: (document.getElementById('rateRange') || {}).value || '0.98',
-    pitch: (document.getElementById('pitchRange') || {}).value || '1.10'
-  };
-  try {
-    localStorage.setItem(SETTINGS_KEY, JSON.stringify(data));
-  } catch (e) {}
+  <div class="bar"><span id="waveBar"></span></div>
+
+  <div class="row">
+    <select id="langSel" style="flex:1;min-width:140px">
+      <option value="ALL">Hindi + English</option>
+      <option value="HI">Hindi</option>
+      <option value="EN">English</option>
+    </select>
+    <select id="genSel" style="flex:1;min-width:140px">
+      <option value="FEMALE">Female Style</option>
+      <option value="MALE">Male Style</option>
+    </select>
+    <button type="button" class="sec" id="pwrBtn" onclick="togglePwr()">ON</button>
+  </div>
+
+  <textarea id="txt">Namaste! UPSECOND X1 Voice Studio ab chal raha hai.</textarea>
+
+  <div class="row">
+    <button type="button" onclick="speakNow()">Speak</button>
+    <button type="button" class="sec" onclick="stopNow()">Stop</button>
+  </div>
+
+  <div class="status" id="vStatus">Ready</div>
+  <div class="hist" id="histBox">History: Khali</div>
+</div>
+
+<script>
+let isOn = true;
+let hist = [];
+
+function getUser(){
+  try{return JSON.parse(localStorage.getItem('x1_user')||'null');}catch(e){return null;}
 }
-
-function loadVoiceSettings() {
-  try {
-    const raw = localStorage.getItem(SETTINGS_KEY);
-    if (!raw) return;
-    const d = JSON.parse(raw);
-    if (d.lang && document.getElementById('langFilter')) document.getElementById('langFilter').value = d.lang;
-    if (d.gender && document.getElementById('genderFilter')) document.getElementById('genderFilter').value = d.gender;
-    if (d.style && document.getElementById('styleCommand')) document.getElementById('styleCommand').value = d.style;
-    if (d.rate && document.getElementById('rateRange')) document.getElementById('rateRange').value = d.rate;
-    if (d.pitch && document.getElementById('pitchRange')) document.getElementById('pitchRange').value = d.pitch;
-  } catch (e) {}
+function showUser(){
+  const u = getUser();
+  document.getElementById('userStatus').textContent = u
+    ? ('Signed in: ' + u.name + ' (' + u.email + ')')
+    : 'Status: Sign in karke voice chalao';
 }
-
-function splitIntoNaturalChunks(text) {
-  const cleaned = text.replace(/\s+/g, ' ').trim();
-  if (!cleaned) return [];
-  const rawParts = cleaned.match(/[^.!?।]+[.!?।]*|[^.!?।]+$/g) || [cleaned];
-  const chunks = [];
-
-  rawParts.forEach(part => {
-    const p = part.trim();
-    if (!p) return;
-    if (p.length <= 180) {
-      chunks.push(p);
-    } else {
-      const subParts = p.split(/,|;|\n/).map(s => s.trim()).filter(Boolean);
-      subParts.forEach(sp => {
-        if (sp.length <= 180) {
-          chunks.push(sp);
-        } else {
-          for (let i = 0; i < sp.length; i += 170) {
-            chunks.push(sp.slice(i, i + 170).trim());
-          }
-        }
-      });
-    }
-  });
-
-  return chunks.length ? chunks : [cleaned];
-}
-
-function pickBestVoice(langMode, genderMode) {
-  const voices = allVoices || [];
-  const hiEn = voices.filter(isHindiOrEnglish);
-  const langPool = hiEn.filter(v => {
-    const l = (v.lang || '').toLowerCase();
-    if (langMode === 'HI') return l.startsWith('hi');
-    if (langMode === 'EN') return l.startsWith('en');
-    return true;
-  });
-
-  const targetPool = langPool.length ? langPool : (hiEn.length ? hiEn : voices);
-
-  const exactGender = targetPool.find(v => detectGender(v) === genderMode);
-  if (exactGender) return exactGender;
-
-  const anyGenderInAll = voices.find(v => detectGender(v) === genderMode);
-  if (anyGenderInAll) return anyGenderInAll;
-
-  const nonOpposite = targetPool.find(v => detectGender(v) !== (genderMode === 'FEMALE' ? 'MALE' : 'FEMALE'));
-  return nonOpposite || targetPool[0] || null;
-}
-
-function computeCommandParams(genderMode, styleMode, userRate, userPitch) {
-  let rate = Number(userRate) || (genderMode === 'MALE' ? 0.94 : 0.98);
-  let pitch = Number(userPitch) || (genderMode === 'MALE' ? 0.84 : 1.12);
-
-  if (styleMode === 'expressive') {
-    rate = Math.min(1.3, rate + 0.06);
-    pitch = genderMode === 'MALE' ? Math.min(0.95, pitch + 0.04) : Math.min(1.28, pitch + 0.06);
-  } else if (styleMode === 'calm') {
-    rate = Math.max(0.72, rate - 0.08);
-    pitch = genderMode === 'MALE' ? Math.max(0.68, pitch - 0.04) : Math.max(0.88, pitch - 0.04);
-  }
-
-  if (genderMode === 'MALE' && pitch > 0.96) {
-    pitch = 0.84;
-  }
-  if (genderMode === 'FEMALE' && pitch < 0.92) {
-    pitch = 1.12;
-  }
-
-  return {
-    rate: Number(Math.max(0.65, Math.min(1.4, rate)).toFixed(2)),
-    pitch: Number(Math.max(0.65, Math.min(1.35, pitch)).toFixed(2))
-  };
-}
-
-function applyCommandPreset() {
-  const gender = (document.getElementById('genderFilter') || {}).value || 'FEMALE';
-  const style = (document.getElementById('styleCommand') || {}).value || 'natural';
-  const rateEl = document.getElementById('rateRange');
-  const pitchEl = document.getElementById('pitchRange');
-
-  const defaultRate = gender === 'MALE' ? 0.94 : 0.98;
-  const defaultPitch = gender === 'MALE' ? 0.84 : 1.12;
-  const tuned = computeCommandParams(gender, style, defaultRate, defaultPitch);
-
-  if (rateEl) rateEl.value = String(tuned.rate);
-  if (pitchEl) pitchEl.value = String(tuned.pitch);
-  updateSliders();
-  populateVoices();
-  saveVoiceSettings();
-}
-
-function speakText() {
-  const statusEl = document.getElementById('voiceStatus');
-  const textEl = document.getElementById('voiceText');
-  const fullText = textEl ? textEl.value.trim() : '';
-
-  if (typeof studioEnabled !== 'undefined' && !studioEnabled) {
-    if (statusEl) statusEl.textContent = 'Studio OFF hai — pehle ON karo.';
+function signIn(){
+  const n = document.getElementById('uName').value.trim();
+  const e = document.getElementById('uEmail').value.trim();
+  if(!n || !e){
+    document.getElementById('userStatus').textContent = 'Naam aur email dono likho.';
     return;
   }
-  if (!fullText) {
-    if (statusEl) statusEl.textContent = 'Please type some text first.';
-    return;
-  }
-  if (!('speechSynthesis' in window) || typeof SpeechSynthesisUtterance === 'undefined') {
-    if (statusEl) statusEl.textContent = 'Is device/browser mein voice support nahi hai.';
-    return;
-  }
-
-  saveVoiceSettings();
-
-  if (!allVoices || allVoices.length === 0) {
-    try { allVoices = window.speechSynthesis.getVoices() || []; } catch (e) {}
-  }
-
-  speakSessionId += 1;
-  const currentSession = speakSessionId;
-  isSpeakingActive = true;
-
-  const chunks = splitIntoNaturalChunks(fullText);
-  const voiceSelect = document.getElementById('voiceSelect');
-  const selectedVal = voiceSelect ? voiceSelect.value : 'AUTO';
-  const langMode = (document.getElementById('langFilter') || {}).value || 'ALL';
-  const genderMode = (document.getElementById('genderFilter') || {}).value || 'FEMALE';
-  const styleMode = (document.getElementById('styleCommand') || {}).value || 'natural';
-  const rateEl = document.getElementById('rateRange');
-  const pitchEl = document.getElementById('pitchRange');
-
-  const chosenVoice = (selectedVal !== 'AUTO' && selectedVal !== '' && allVoices[Number(selectedVal)])
-    ? allVoices[Number(selectedVal)]
-    : pickBestVoice(langMode, genderMode);
-
-  const params = computeCommandParams(
-    genderMode,
-    styleMode,
-    rateEl ? rateEl.value : undefined,
-    pitchEl ? pitchEl.value : undefined
-  );
-
-  if (typeof saveToHistory === 'function') {
-    saveToHistory(fullText);
-  }
-
-  try {
-    window.speechSynthesis.cancel();
-    if (typeof window.speechSynthesis.resume === 'function') {
-      window.speechSynthesis.resume();
-    }
-  } catch (e) {}
-
-  let index = 0;
-
-  function playNextChunk() {
-    if (!isSpeakingActive || currentSession !== speakSessionId) {
-      setSpeakingLine(false);
-      return;
-    }
-    if (index >= chunks.length) {
-      isSpeakingActive = false;
-      setSpeakingLine(false);
-      if (statusEl) statusEl.textContent = 'Ready';
-      return;
-    }
-
-    const utter = new SpeechSynthesisUtterance(chunks[index]);
-    if (chosenVoice) {
-      utter.voice = chosenVoice;
-      if (chosenVoice.lang) utter.lang = chosenVoice.lang;
-    } else {
-      utter.lang = langMode === 'HI' ? 'hi-IN' : 'en-IN';
-    }
-    utter.rate = params.rate;
-    utter.pitch = params.pitch;
-
-    utter.onstart = () => {
-      if (currentSession !== speakSessionId) return;
-      setSpeakingLine(true);
-      if (statusEl) {
-        statusEl.textContent = `Speaking ${genderMode === 'MALE' ? 'Male' : 'Female'} (${index + 1}/${chunks.length})...`;
-      }
-    };
-
-    utter.onend = () => {
-      if (currentSession !== speakSessionId) return;
-      index += 1;
-      playNextChunk();
-    };
-
-    utter.onerror = () => {
-      if (currentSession !== speakSessionId) return;
-      index += 1;
-      if (index < chunks.length) {
-        playNextChunk();
-      } else {
-        isSpeakingActive = false;
-        setSpeakingLine(false);
-        if (statusEl) statusEl.textContent = 'Ready';
-      }
-    };
-
-    try {
-      window.speechSynthesis.speak(utter);
-    } catch (err) {
-      isSpeakingActive = false;
-      setSpeakingLine(false);
-      if (statusEl) statusEl.textContent = 'Voice chalane mein dikkat aayi.';
-    }
-  }
-
-  setTimeout(playNextChunk, 35);
+  localStorage.setItem('x1_user', JSON.stringify({name:n,email:e}));
+  showUser();
 }
-
-function stopSpeech() {
-  speakSessionId += 1;
-  isSpeakingActive = false;
-  setSpeakingLine(false);
-  if ('speechSynthesis' in window) {
-    try { window.speechSynthesis.cancel(); } catch (e) {}
-  }
-  const statusEl = document.getElementById('voiceStatus');
-  if (statusEl && (typeof studioEnabled === 'undefined' || studioEnabled)) {
-    statusEl.textContent = 'Stopped';
-  }
+function togglePwr(){
+  isOn = !isOn;
+  document.getElementById('pwrBtn').textContent = isOn ? 'ON' : 'OFF';
+  if(!isOn) stopNow();
+  document.getElementById('vStatus').textContent = isOn ? 'Ready' : 'Studio OFF';
 }
+function setBar(active){
+  document.getElementById('waveBar').style.transform = active ? 'translateX(220%)' : 'translateX(0%)';
+}
+function speakNow(){
+  if(!isOn){document.getElementById('vStatus').textContent='Studio OFF hai.';return;}
+  if(!getUser()){document.getElementById('vStatus').textContent='Pehle Sign In karo.';return;}
+  const t = document.getElementById('txt').value.trim();
+  if(!t){document.getElementById('vStatus').textContent='Text likho.';return;}
+  if(!('speechSynthesis' in window)){document.getElementById('vStatus').textContent='Voice support nahi hai.';return;}
 
-loadVoiceSettings();
-updateSliders();
-populateVoices();
+  const lang = document.getElementById('langSel').value;
+  const gen = document.getElementById('genSel').value;
+  const voices = window.speechSynthesis.getVoices() || [];
+  const pick = voices.find(v => {
+    const l = (v.lang||'').toLowerCase();
+    if(lang==='HI') return l.startsWith('hi');
+    if(lang==='EN') return l.startsWith('en');
+    return l.startsWith('hi') || l.startsWith('en');
+  }) || voices[0] || null;
+
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(t);
+  if(pick){u.voice = pick; u.lang = pick.lang;}
+  else{u.lang = lang==='HI' ? 'hi-IN' : 'en-IN';}
+  u.pitch = gen==='MALE' ? 0.82 : 1.12;
+  u.rate = 0.98;
+  u.onstart = () => {setBar(true); document.getElementById('vStatus').textContent='Speaking...';};
+  u.onend = () => {setBar(false); document.getElementById('vStatus').textContent='Ready';};
+  u.onerror = () => {setBar(false); document.getElementById('vStatus').textContent='Awaaz nahi chali.';};
+
+  hist.unshift(t);
+  hist = hist.slice(0,3);
+  document.getElementById('histBox').textContent = 'History: ' + hist.join(' | ');
+  window.speechSynthesis.speak(u);
+}
+function stopNow(){
+  setBar(false);
+  if('speechSynthesis' in window){try{window.speechSynthesis.cancel();}catch(e){}}
+  document.getElementById('vStatus').textContent = 'Stopped';
+}
+showUser();
+if('speechSynthesis' in window){window.speechSynthesis.getVoices();}
+</script>
+</body>
+</html>
